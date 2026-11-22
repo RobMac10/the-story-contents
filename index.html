@@ -85,14 +85,16 @@ a { color: inherit; }
   border: 3px solid rgba(90,50,16,.14); mix-blend-mode: multiply; filter: blur(.6px); }
 
 /* Four side tabs: each book's story headings, in that book's colour */
-.tabs { position: absolute; right: 0; top: 0; width: 0; height: 0; z-index: 6; }
+.tabs { position: absolute; right: 0; top: 0; width: 124px; height: 100%; z-index: 6; pointer-events: none; }
 .tab { position: absolute; right: 0; width: 124px; height: 198px; border-radius: 14px 0 0 14px;
   box-shadow: -2px 2px 5px rgba(60,35,15,.28), inset 2px 0 0 rgba(255,255,255,.28);
-  text-decoration: none; color: #FBF7EF;
+  text-decoration: none; color: #FBF7EF; pointer-events: auto;
   display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
   padding: 14px 10px 14px 14px; gap: 5px;
   font: 700 13px/1.22 Gelasio, Georgia, serif; }
-.tab span { display: block; width: 100%; text-wrap: balance; }
+.tab span, .tab > a:not(.tab-book) { display: block; width: 100%; text-wrap: balance; }
+.tab > a:not(.tab-book) { color: inherit; text-decoration: none; position: relative; z-index: 1; }
+.tab .tab-book { position: absolute; inset: 0; z-index: 0; }
 .tab:nth-child(1) { top: 160px; background: var(--b1); }
 .tab:nth-child(2) { top: 370px; background: var(--b2); }
 .tab:nth-child(3) { top: 580px; background: var(--b3); }
@@ -105,17 +107,26 @@ body { background: #f4ead6; }
 .cover-frame { width: min(100%, 680px); margin: 0 auto 8px; position: relative; overflow: hidden; }
 .cover-sizer { width: 100%; padding-top: calc(1123 / 794 * 100%); }
 .cover-inner { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 .tab { cursor: pointer; }
-.tab:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.tab a:focus-visible, .story-tab a:focus-visible {
+  outline: 3px solid #fff; outline-offset: 2px; }
 .story-tabs { display: none; max-width: 680px; margin: 8px auto 18px; padding: 0 16px;
   flex-direction: column; gap: 8px; }
-.story-tab { display: block; text-decoration: none; color: #FBF7EF;
-  border-radius: 6px; padding: 10px 14px; font: 700 16px/1.3 Gelasio, Georgia, serif;
+.story-tab { display: block; position: relative; text-decoration: none; color: #FBF7EF;
+  border-radius: 6px; padding: 8px 14px; font: 700 16px/1.3 Gelasio, Georgia, serif;
   box-shadow: 0 1px 3px rgba(60,35,15,.25); }
-.story-tab span { display: block; }
+.story-tab span, .story-tab > a:not(.tab-book) { display: block; color: inherit; text-decoration: none;
+  position: relative; z-index: 1; padding: 6px 0; }
+.story-tab .tab-book { position: absolute; inset: 0; z-index: 0; padding: 0; }
 @media (max-width: 640px) {
   .story-tabs { display: flex; }
 }
+.book:target { box-shadow: 0 0 0 3px color-mix(in srgb, var(--book) 55%, #fff); }
+.row.part:target { background: color-mix(in srgb, var(--book) 12%, transparent); border-radius: 3px; }
 .print-only { display: none !important; }
 .web-contents { max-width: 980px; margin: 0 auto; padding: 8px 16px 48px; }
 .contents-head { text-align: center; margin: 18px 0 22px; }
@@ -138,7 +149,7 @@ body { background: #f4ead6; }
 .row .ttl { flex: 0 1 auto; min-width: 0; }
 .row .dots { flex: 1 1 auto; border-bottom: 1px dotted #c4b496; margin: 0 6px 3px; min-width: 8px; height: 0; }
 .row .num { flex: 0 0 auto; font-variant-numeric: tabular-nums; min-width: 1.4em; text-align: right; }
-.row.part { margin-top: 8px; }
+.row.part { margin-top: 8px; scroll-margin-top: 12px; }
 .row.part:first-child { margin-top: 0; }
 .row.part .ttl, .row.part .num { font: 700 14px/1.3 'Playfair Display', Georgia, serif; color: var(--book); }
 .row.ch .ttl, .row.ch .num { font: 400 14.5px/1.35 Lora, Georgia, serif; }
@@ -213,20 +224,20 @@ body { background: #f4ead6; }
     </svg>
   </div>
   <div class="tabs">
-    <a class="tab" href="#book-one"><span>Before the Ships</span><span>The Claim</span><span>Gold and Who Belongs</span><span>Federation</span></a>
-    <a class="tab" href="#book-two"><span>The Frontier</span><span>Gold and Who Belongs</span></a>
-    <a class="tab" href="#book-three"><span>A Nation, and Who Is In It</span></a>
-    <a class="tab" href="#book-four"><span>Taken</span><span>After the War</span><span>Native Title</span><span>The Record Is Still Open</span></a>
+    <div class="tab"><a class="tab-book" href="#book-one" aria-label="Book One"></a><a href="#book-one-before-the-ships">Before the Ships</a><a href="#book-one-the-claim">The Claim</a><a href="#book-one-gold-and-who-belongs">Gold and Who Belongs</a><a href="#book-one-federation">Federation</a></div>
+    <div class="tab"><a class="tab-book" href="#book-two" aria-label="Book Two"></a><a href="#book-two-the-frontier">The Frontier</a><a href="#book-two-gold-and-who-belongs">Gold and Who Belongs</a></div>
+    <div class="tab"><a class="tab-book" href="#book-three" aria-label="Book Three"></a><a href="#book-three-a-nation-and-who-is-in-it">A Nation, and Who Is In It</a></div>
+    <div class="tab"><a class="tab-book" href="#book-four" aria-label="Book Four"></a><a href="#book-four-taken">Taken</a><a href="#book-four-after-the-war">After the War</a><a href="#book-four-native-title">Native Title</a><a href="#book-four-the-record-is-still-open">The Record Is Still Open</a></div>
   </div>
   <div class="grain"></div><div class="vig"></div>
 </div>
   </div>
 </section>
 <nav class='story-tabs' aria-label='The four books'>
-<a class='story-tab' href='#book-one' style='background:#8B3419'><span>Before the Ships</span><span>The Claim</span><span>Gold and Who Belongs</span><span>Federation</span></a>
-<a class='story-tab' href='#book-two' style='background:#6A4A12'><span>The Frontier</span><span>Gold and Who Belongs</span></a>
-<a class='story-tab' href='#book-three' style='background:#334226'><span>A Nation, and Who Is In It</span></a>
-<a class='story-tab' href='#book-four' style='background:#5A2A3A'><span>Taken</span><span>After the War</span><span>Native Title</span><span>The Record Is Still Open</span></a>
+<div class='story-tab' style='background:#8B3419'><a class='tab-book' href='#book-one' aria-label='Book One'></a><a href='#book-one-before-the-ships'>Before the Ships</a><a href='#book-one-the-claim'>The Claim</a><a href='#book-one-gold-and-who-belongs'>Gold and Who Belongs</a><a href='#book-one-federation'>Federation</a></div>
+<div class='story-tab' style='background:#6A4A12'><a class='tab-book' href='#book-two' aria-label='Book Two'></a><a href='#book-two-the-frontier'>The Frontier</a><a href='#book-two-gold-and-who-belongs'>Gold and Who Belongs</a></div>
+<div class='story-tab' style='background:#334226'><a class='tab-book' href='#book-three' aria-label='Book Three'></a><a href='#book-three-a-nation-and-who-is-in-it'>A Nation, and Who Is In It</a></div>
+<div class='story-tab' style='background:#5A2A3A'><a class='tab-book' href='#book-four' aria-label='Book Four'></a><a href='#book-four-taken'>Taken</a><a href='#book-four-after-the-war'>After the War</a><a href='#book-four-native-title'>Native Title</a><a href='#book-four-the-record-is-still-open'>The Record Is Still Open</a></div>
 </nav>
 <main class='web-contents' id='contents'>
 <header class="contents-head">
@@ -242,13 +253,13 @@ body { background: #f4ead6; }
     
   </header>
   <div class="body">
-    <div class="row part"><span class="ttl">Part One  ·  Before the Ships</span><span class="dots"></span><span class="num">3</span></div>
+    <div class="row part" id="book-one-before-the-ships"><span class="ttl">Part One  ·  Before the Ships</span><span class="dots"></span><span class="num">3</span></div>
 <div class="row ch"><span class="ttl">Deep Time <span class="sub">— How long have people been here?</span></span><span class="dots"></span><span class="num">4</span></div>
 <div class="row ch"><span class="ttl">The Plate at Cape Inscription, 1616 <span class="sub">— A ship stops for two days</span></span><span class="dots"></span><span class="num">6</span></div>
 <div class="row ch"><span class="ttl">Batavia, 1629 <span class="sub">— The wreck and the mutiny</span></span><span class="dots"></span><span class="num">8</span></div>
 <div class="row ch"><span class="ttl">From the West Coast to Kamay <span class="sub">— 1768 and 1770</span></span><span class="dots"></span><span class="num">12</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/before-the-ships">robmac10.github.io/before-the-ships</a></span><span class="dots"></span><span class="num">14</span></div>
-<div class="row part"><span class="ttl">Part Two  ·  The Claim</span><span class="dots"></span><span class="num">15</span></div>
+<div class="row part" id="book-one-the-claim"><span class="ttl">Part Two  ·  The Claim</span><span class="dots"></span><span class="num">15</span></div>
 <div class="row ch"><span class="ttl">Kamay <span class="sub">— April and May 1770</span></span><span class="dots"></span><span class="num">16</span></div>
 <div class="row ch"><span class="ttl">Possession Island <span class="sub">— August 1770</span></span><span class="dots"></span><span class="num">19</span></div>
 <div class="row ch"><span class="ttl">Botany Bay and Warrane <span class="sub">— 1787 and 1788</span></span><span class="dots"></span><span class="num">24</span></div>
@@ -257,7 +268,7 @@ body { background: #f4ead6; }
 <div class="row ch"><span class="ttl">Pemulwuy <span class="sub">— 1790 to 1802</span></span><span class="dots"></span><span class="num">35</span></div>
 <div class="row ch"><span class="ttl">Bungaree <span class="sub">— Around the continent, 1802 to 1803</span></span><span class="dots"></span><span class="num">40</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/the-claim">robmac10.github.io/the-claim</a></span><span class="dots"></span><span class="num">49</span></div>
-<div class="row part"><span class="ttl">Part Three  ·  Gold and Who Belongs</span><span class="dots"></span><span class="num">50</span></div>
+<div class="row part" id="book-one-gold-and-who-belongs"><span class="ttl">Part Three  ·  Gold and Who Belongs</span><span class="dots"></span><span class="num">50</span></div>
 <div class="row ch"><span class="ttl">Eureka <span class="sub">— Ballarat, 1854</span></span><span class="dots"></span><span class="num">51</span></div>
 <div class="row ch"><span class="ttl">The Walk from Robe <span class="sub">— 1855 to 1857</span></span><span class="dots"></span><span class="num">53</span></div>
 <div class="row ch"><span class="ttl">Lambing Flat <span class="sub">— 1860 and 1861</span></span><span class="dots"></span><span class="num">54</span></div>
@@ -265,7 +276,7 @@ body { background: #f4ead6; }
 <div class="row ch"><span class="ttl">Torres Strait <span class="sub">— 1879</span></span><span class="dots"></span><span class="num">57</span></div>
 <div class="row ch"><span class="ttl">Jandamarra <span class="sub">— The Kimberley, 1894 to 1897</span></span><span class="dots"></span><span class="num">59</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/gold-who-belongs">robmac10.github.io/gold-who-belongs</a></span><span class="dots"></span><span class="num">60</span></div>
-<div class="row part"><span class="ttl">Part Four  ·  Federation</span><span class="dots"></span><span class="num">61</span></div>
+<div class="row part" id="book-one-federation"><span class="ttl">Part Four  ·  Federation</span><span class="dots"></span><span class="num">61</span></div>
 <div class="row ch"><span class="ttl">One Nation <span class="sub">— 1901</span></span><span class="dots"></span><span class="num">62</span></div>
 <div class="row ch"><span class="ttl">The Dictation Test <span class="sub">— 1901</span></span><span class="dots"></span><span class="num">64</span></div>
 <div class="row ch"><span class="ttl">Epilogue: The Vote <span class="sub">— 1894 to 1902</span></span><span class="dots"></span><span class="num">65</span></div>
@@ -282,7 +293,7 @@ body { background: #f4ead6; }
   </header>
   <div class="body">
     <div class="row ch"><span class="ttl">The Story So Far <span class="sub">— Book One, from deep time to 1901</span></span><span class="dots"></span><span class="num">3</span></div>
-<div class="row part"><span class="ttl">Part One  ·  The Frontier</span><span class="dots"></span><span class="num">7</span></div>
+<div class="row part" id="book-two-the-frontier"><span class="ttl">Part One  ·  The Frontier</span><span class="dots"></span><span class="num">7</span></div>
 <div class="row ch"><span class="ttl">Risdon Cove <span class="sub">— May 1804</span></span><span class="dots"></span><span class="num">8</span></div>
 <div class="row ch"><span class="ttl">The Hawkesbury and Appin <span class="sub">— 1794 to 1816</span></span><span class="dots"></span><span class="num">11</span></div>
 <div class="row ch"><span class="ttl">Martial Law at Bathurst <span class="sub">— 1824</span></span><span class="dots"></span><span class="num">14</span></div>
@@ -296,7 +307,7 @@ body { background: #f4ead6; }
 <div class="row ch"><span class="ttl">Eumeralla <span class="sub">— The western district, 1840s</span></span><span class="dots"></span><span class="num">32</span></div>
 <div class="row ch"><span class="ttl">The Native Police <span class="sub">— 1837 to 1861</span></span><span class="dots"></span><span class="num">34</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/the-frontier">robmac10.github.io/the-frontier</a></span><span class="dots"></span><span class="num">36</span></div>
-<div class="row part"><span class="ttl">Part Two  ·  Gold and Who Belongs</span><span class="dots"></span><span class="num">37</span></div>
+<div class="row part" id="book-two-gold-and-who-belongs"><span class="ttl">Part Two  ·  Gold and Who Belongs</span><span class="dots"></span><span class="num">37</span></div>
 <div class="row ch"><span class="ttl">Eureka <span class="sub">— Ballarat, 1851 to 1855</span></span><span class="dots"></span><span class="num">38</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/who-fired-first">robmac10.github.io/who-fired-first</a></span><span class="dots"></span><span class="num">42</span></div>
 <div class="row ch"><span class="ttl">The Walk from Robe <span class="sub">— 1855 to 1857</span></span><span class="dots"></span><span class="num">44</span></div>
@@ -323,7 +334,7 @@ body { background: #f4ead6; }
   </header>
   <div class="body">
     <div class="row ch"><span class="ttl">The Story So Far <span class="sub">— Books One and Two, from deep time to 1901</span></span><span class="dots"></span><span class="num">3</span></div>
-<div class="row part"><span class="ttl">Part One  ·  A Nation, and Who Is In It</span><span class="dots"></span><span class="num">7</span></div>
+<div class="row part" id="book-three-a-nation-and-who-is-in-it"><span class="ttl">Part One  ·  A Nation, and Who Is In It</span><span class="dots"></span><span class="num">7</span></div>
 <div class="row ch"><span class="ttl">The Vote for Women <span class="sub">— South Australia and Western Australia, 1894 to 1899</span></span><span class="dots"></span><span class="num">8</span></div>
 <div class="row ch"><span class="ttl">Federation <span class="sub">— 1 January 1901</span></span><span class="dots"></span><span class="num">10</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/federation-case">robmac10.github.io/federation-case</a></span><span class="dots"></span><span class="num">12</span></div>
@@ -346,14 +357,14 @@ body { background: #f4ead6; }
   </header>
   <div class="body">
     <div class="row ch"><span class="ttl">The Story So Far <span class="sub">— Books One to Three, from deep time to 1928</span></span><span class="dots"></span><span class="num">3</span></div>
-<div class="row part"><span class="ttl">Part One  ·  Taken</span><span class="dots"></span><span class="num">6</span></div>
+<div class="row part" id="book-four-taken"><span class="ttl">Part One  ·  Taken</span><span class="dots"></span><span class="num">6</span></div>
 <div class="row ch"><span class="ttl">The Protection Acts <span class="sub">— 1897 to 1915</span></span><span class="dots"></span><span class="num">7</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/protection-case">robmac10.github.io/protection-case</a></span><span class="dots"></span><span class="num">8</span></div>
 <div class="row ch"><span class="ttl">Absorption <span class="sub">— 1937</span></span><span class="dots"></span><span class="num">9</span></div>
 <div class="row ch"><span class="ttl">The Day of Mourning <span class="sub">— 26 January 1938, and Cummeragunja, February 1939</span></span><span class="dots"></span><span class="num">10</span></div>
 <div class="row ch"><span class="ttl">Bringing Them Home <span class="sub">— 1995 to 1997</span></span><span class="dots"></span><span class="num">13</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/taken">robmac10.github.io/taken</a></span><span class="dots"></span><span class="num">14</span></div>
-<div class="row part"><span class="ttl">Part Two  ·  After the War</span><span class="dots"></span><span class="num">15</span></div>
+<div class="row part" id="book-four-after-the-war"><span class="ttl">Part Two  ·  After the War</span><span class="dots"></span><span class="num">15</span></div>
 <div class="row ch"><span class="ttl">The Centaur <span class="sub">— 14 May 1943</span></span><span class="dots"></span><span class="num">16</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/centaur-case">robmac10.github.io/centaur-case</a></span><span class="dots"></span><span class="num">16</span></div>
 <div class="row ch"><span class="ttl">Citizens <span class="sub">— 1944 to 1962</span></span><span class="dots"></span><span class="num">17</span></div>
@@ -365,14 +376,14 @@ body { background: #f4ead6; }
 <div class="row ch"><span class="ttl">The Tent Embassy <span class="sub">— 26 January 1972</span></span><span class="dots"></span><span class="num">27</span></div>
 <div class="row ch"><span class="ttl">Deaths in Custody <span class="sub">— 1987 to 1991</span></span><span class="dots"></span><span class="num">28</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/after-the-war">robmac10.github.io/after-the-war</a></span><span class="dots"></span><span class="num">29</span></div>
-<div class="row part"><span class="ttl">Part Three  ·  Native Title</span><span class="dots"></span><span class="num">30</span></div>
+<div class="row part" id="book-four-native-title"><span class="ttl">Part Three  ·  Native Title</span><span class="dots"></span><span class="num">30</span></div>
 <div class="row ch"><span class="ttl">Mabo <span class="sub">— 1982 to 1992</span></span><span class="dots"></span><span class="num">31</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/mabo-case">robmac10.github.io/mabo-case</a></span><span class="dots"></span><span class="num">32</span></div>
 <div class="row ch"><span class="ttl">The Native Title Act <span class="sub">— 1993</span></span><span class="dots"></span><span class="num">33</span></div>
 <div class="row ch"><span class="ttl">Wik <span class="sub">— 1996 to 1998</span></span><span class="dots"></span><span class="num">34</span></div>
 <div class="row ch"><span class="ttl">The Intervention and the Apology <span class="sub">— 2007 to 2008</span></span><span class="dots"></span><span class="num">36</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/native-title">robmac10.github.io/native-title</a></span><span class="dots"></span><span class="num">38</span></div>
-<div class="row part"><span class="ttl">Coda  ·  The Record Is Still Open</span><span class="dots"></span><span class="num">39</span></div>
+<div class="row part" id="book-four-the-record-is-still-open"><span class="ttl">Coda  ·  The Record Is Still Open</span><span class="dots"></span><span class="num">39</span></div>
 <div class="row ch"><span class="ttl">The Record Is Still Open <span class="sub">— 2017 to 2025</span></span><span class="dots"></span><span class="num">40</span></div>
 <div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/record-still-open">robmac10.github.io/record-still-open</a></span><span class="dots"></span><span class="num">42</span></div>
 <div class="row end"><span class="ttl">Sources</span><span class="dots"></span><span class="num">43</span></div>
