@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang='en'><head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<meta name='robots' content='noindex, nofollow'>
+<title>Reopen the Record -- The four books</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Playfair+Display+SC:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap');
+@font-face { font-family: 'Gelasio'; src: url('fonts/Gelasio.ttf') format('truetype'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Gelasio'; src: url('fonts/Gelasio-Italic.ttf') format('truetype'); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Courier Prime'; src: url('fonts/CourierPrime.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Courier Prime'; src: url('fonts/CourierPrime-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+
+
+:root {
+  --ink: #2B2118;
+  --cream: #FBF7EF;
+  --rule: #B9A27A;
+  --muted: #6B5A45;
+  --b1: #8B3419;
+  --b2: #6A4A12;
+  --b3: #334226;
+  --b4: #5A2A3A;
+  --t1: #F6EBE4;
+  --t2: #F6F0E0;
+  --t3: #EEF1E6;
+  --t4: #F3EAEE;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #f4ead6;
+  color: var(--ink);
+  font-family: Lora, Georgia, serif;
+}
+a { color: inherit; }
+
+
+/* ---------- Title page (envelope) ---------- */
+.cover-frame { position: relative; }
+.cover-inner { position: relative; width: 794px; height: 1123px; overflow: hidden;
+  background: #f4ead6; font-family: Gelasio, Georgia, serif; color: #2b221c; }
+.grain { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .55;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.33  0 0 0 0 0.2  0 0 0 0.22 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>"); }
+.vig { position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 45%, rgba(255,250,238,0) 45%, rgba(120,80,40,.22) 100%); }
+.filters { position: absolute; width: 0; height: 0; }
+.envelope { position: absolute; left: 44px; top: 96px; width: 590px; height: 900px;
+  transform: rotate(-1.2deg);
+  filter: drop-shadow(0 18px 22px rgba(70,40,15,.38)) drop-shadow(0 3px 4px rgba(70,40,15,.3)); }
+.envelope-body { position: absolute; inset: 0; border-radius: 6px;
+  background: linear-gradient(172deg, #e1c186 0%, #d6b273 55%, #cda764 100%); }
+.envelope-body::after { content: ""; position: absolute; inset: 0; border-radius: 6px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.045 0.6' numOctaves='3' seed='9'/><feColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.28  0 0 0 0 0.1  0 0 0 0.35 -0.04'/></filter><rect width='300' height='300' filter='url(%23f)'/></svg>");
+  opacity: .8; }
+.seams { position: absolute; inset: 0; }
+.flap { position: absolute; left: 0; top: 0; width: 590px; height: 330px;
+  clip-path: polygon(0 0,100% 0,100% 18%,50% 100%,0 18%);
+  background: linear-gradient(180deg, #cfa966 0%, #c49d5a 100%); }
+.flapshadow { position: absolute; left: 0; top: 0; width: 590px; height: 350px;
+  clip-path: polygon(0 0,100% 0,100% 18%,50% 100%,0 18%);
+  background: transparent; filter: drop-shadow(0 7px 5px rgba(80,45,15,.45)); }
+.edge { position: absolute; left: 12px; right: 12px; top: 12px; bottom: 12px;
+  border: 2px dashed rgba(120,80,35,.28); border-radius: 4px; }
+.label { position: absolute; left: 58px; top: 448px; width: 474px; background: #f8f1df;
+  padding: 26px 28px 24px; transform: rotate(.7deg);
+  box-shadow: 0 2px 5px rgba(60,35,15,.35); border: 1px solid #d7c8a3; filter: url(#paper); }
+.label:before { content: ""; position: absolute; left: -1px; top: -1px; width: 100%; height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,0) 0 27px, rgba(150,120,70,.07) 27px 28px); }
+.case { font: 700 13.5px 'Courier Prime', monospace; letter-spacing: 2px; color: #8b3a1e;
+  text-transform: uppercase; line-height: 1.35; }
+.title { font: 700 42px/1.06 Gelasio, Georgia, serif; color: #4a2e1b; margin: 12px 0 8px; letter-spacing: -.4px; }
+.title i { font-style: italic; font-weight: 600; color: #8b3a1e; display: block; font-size: 32px; margin-top: 4px; }
+.stamp { position: absolute; border: 5px double #b3261e; color: #b3261e;
+  font: 700 26px 'Courier Prime', 'Liberation Mono', monospace; letter-spacing: 3px;
+  text-align: center; line-height: 1.1; padding: 12px 18px 10px; border-radius: 6px;
+  opacity: .88; mix-blend-mode: multiply; filter: url(#rough);
+  left: 90px; top: 708px; transform: rotate(-8deg); width: 300px; }
+.coffee { position: absolute; right: -18px; bottom: 128px; width: 190px; height: 190px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(110,62,22,.05) 0 60%, rgba(110,62,22,.22) 64%, rgba(86,46,14,.34) 66%, rgba(110,62,22,.12) 70%, rgba(110,62,22,0) 74%);
+  mix-blend-mode: multiply; filter: url(#rough); }
+.coffee2 { position: absolute; right: 20px; bottom: 150px; width: 120px; height: 120px; border-radius: 50%;
+  border: 3px solid rgba(90,50,16,.14); mix-blend-mode: multiply; filter: blur(.6px); }
+
+/* Four side tabs: each book's story headings, in that book's colour */
+.tabs { position: absolute; right: 0; top: 0; width: 0; height: 0; z-index: 6; }
+.tab { position: absolute; right: 0; width: 124px; height: 198px; border-radius: 14px 0 0 14px;
+  box-shadow: -2px 2px 5px rgba(60,35,15,.28), inset 2px 0 0 rgba(255,255,255,.28);
+  text-decoration: none; color: #FBF7EF;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  padding: 14px 10px 14px 14px; gap: 5px;
+  font: 700 13px/1.22 Gelasio, Georgia, serif; }
+.tab span { display: block; width: 100%; text-wrap: balance; }
+.tab:nth-child(1) { top: 160px; background: var(--b1); }
+.tab:nth-child(2) { top: 370px; background: var(--b2); }
+.tab:nth-child(3) { top: 580px; background: var(--b3); }
+.tab:nth-child(4) { top: 790px; background: var(--b4); }
+
+
+/* ---------- Screen / web ---------- */
+body { background: #f4ead6; }
+.page.cover { padding: 16px 12px 8px; }
+.cover-frame { width: min(100%, 680px); margin: 0 auto 8px; position: relative; overflow: hidden; }
+.cover-sizer { width: 100%; padding-top: calc(1123 / 794 * 100%); }
+.cover-inner { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.tab { cursor: pointer; }
+.tab:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.story-tabs { display: none; max-width: 680px; margin: 8px auto 18px; padding: 0 16px;
+  flex-direction: column; gap: 8px; }
+.story-tab { display: block; text-decoration: none; color: #FBF7EF;
+  border-radius: 6px; padding: 10px 14px; font: 700 16px/1.3 Gelasio, Georgia, serif;
+  box-shadow: 0 1px 3px rgba(60,35,15,.25); }
+.story-tab span { display: block; }
+@media (max-width: 640px) {
+  .story-tabs { display: flex; }
+}
+.print-only { display: none !important; }
+.web-contents { max-width: 980px; margin: 0 auto; padding: 8px 16px 48px; }
+.contents-head { text-align: center; margin: 18px 0 22px; }
+.contents-head .series { font: 700 13px 'Playfair Display SC', 'Playfair Display', serif; letter-spacing: 2.6px; color: #7a5b2e; margin: 0 0 4px; }
+.contents-head h1 { font: 700 34px/1.12 'Playfair Display', Georgia, serif; color: var(--ink); margin: 0 0 4px; }
+.contents-head p { font: italic 16px 'Playfair Display', Georgia, serif; color: var(--muted); margin: 0; }
+.web-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+@media (min-width: 800px) {
+  .web-grid { grid-template-columns: 1fr 1fr; }
+}
+.book { border: 1px solid color-mix(in srgb, var(--book) 30%, #e6d8b8);
+  background: var(--tint); border-radius: 4px; overflow: hidden;
+  scroll-margin-top: 12px; position: relative; }
+.book header { background: var(--book); color: #FBF7EF; padding: 12px 16px 10px; }
+.book header .kicker { font: 700 16px 'Playfair Display SC', 'Playfair Display', serif; letter-spacing: 1.8px; margin: 0; }
+.book header .line { font: italic 13px/1.35 'Playfair Display', Georgia, serif; opacity: .94; margin: 4px 0 0; }
+.book header .pg { font: 600 12px 'Source Sans Pro', 'Source Sans 3', sans-serif; opacity: .92; margin: 4px 0 0; }
+.book .body { padding: 10px 16px 14px; }
+.row { display: flex; align-items: baseline; margin: 0 0 1px; line-height: 1.35; }
+.row .ttl { flex: 0 1 auto; min-width: 0; }
+.row .dots { flex: 1 1 auto; border-bottom: 1px dotted #c4b496; margin: 0 6px 3px; min-width: 8px; height: 0; }
+.row .num { flex: 0 0 auto; font-variant-numeric: tabular-nums; min-width: 1.4em; text-align: right; }
+.row.part { margin-top: 8px; }
+.row.part:first-child { margin-top: 0; }
+.row.part .ttl, .row.part .num { font: 700 14px/1.3 'Playfair Display', Georgia, serif; color: var(--book); }
+.row.ch .ttl, .row.ch .num { font: 400 14.5px/1.35 Lora, Georgia, serif; }
+.row.ch .sub { font-style: italic; color: var(--muted); }
+.row.qr { margin: 1px 0 6px; }
+.row.qr .ttl, .row.qr .num { font: 600 12.5px/1.3 'Source Sans Pro', 'Source Sans 3', sans-serif; color: var(--book); }
+.row.qr a { color: var(--book); text-decoration: underline; text-underline-offset: 2px; }
+.badge { display: inline-block; background: var(--book); color: #FBF7EF; font: 700 9px/1 'Source Sans Pro', 'Source Sans 3', sans-serif;
+  letter-spacing: .6px; padding: 2px 5px 1px; border-radius: 2px; margin-right: 6px; vertical-align: 1px; }
+.row.end { margin-top: 6px; }
+.row.end .ttl, .row.end .num { font: italic 13px Lora, Georgia, serif; color: var(--muted); }
+.care { margin: 28px 16px 0; text-align: center; font: italic 13px/1.4 Lora, Georgia, serif; color: var(--muted); }
+.pdf-link { text-align: center; margin: 18px 0 0; font: 600 13px 'Source Sans Pro', 'Source Sans 3', sans-serif; }
+.pdf-link a { color: #7a5b2e; }
+@media print {
+  .screen-only { display: none !important; }
+  .print-only { display: block !important; }
+  body { background: #fff; }
+  .page { width: 210mm; height: 297mm; page-break-after: always; overflow: hidden; }
+  .cover-frame, .cover-sizer { display: none; }
+  .cover-scale { display: block; width: 210mm; height: 297mm; overflow: hidden; }
+  .cover-scale .cover-inner { position: relative; transform: scale(calc(210mm / 794px)); transform-origin: 0 0; }
+  .web-contents { display: none; }
+}
+
+
+@media print {
+  .pdf-link, script { display: none !important; }
+  body { background: #fff; }
+}
+</style>
+</head>
+<body>
+<section class='page cover' id='top'>
+  <div class='cover-frame'>
+    <div class='cover-sizer'></div>
+<div class="cover-inner">
+  <svg class="filters" aria-hidden="true"><defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="g"/><feColorMatrix in="g" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.6 2.05" result="m"/><feComposite in="d" in2="m" operator="in"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+    <filter id="paper" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.02 0.9" numOctaves="2" seed="11" result="t"/><feColorMatrix in="t" values="0 0 0 0 0.55 0 0 0 0 0.4 0 0 0 0 0.2 0 0 0 .5 -.12" result="tt"/><feBlend in="SourceGraphic" in2="tt" mode="multiply"/></filter>
+  </defs></svg>
+  <div class="envelope">
+    <div class="envelope-body"></div>
+    <svg class="seams" viewBox="0 0 590 900" width="590" height="900" aria-hidden="true"><g stroke="rgba(110,70,25,.33)" stroke-width="1.6" fill="none"><path d="M0 900 L295 560"/><path d="M590 900 L295 560"/><path d="M0 120 L0 900"/></g><g stroke="rgba(255,240,200,.35)" stroke-width="1" fill="none"><path d="M0 902 L295 562"/><path d="M590 902 L295 562"/></g></svg>
+    <div class="edge"></div>
+    <div class="flapshadow"><div class="flap"></div></div>
+    <svg style="position:absolute;left:0;top:0" width="590" height="340" viewBox="0 0 590 340" aria-hidden="true"><path d="M0 0 L590 0 L590 120 L295 336 L0 120 Z" fill="none" stroke="rgba(110,70,25,.5)" stroke-width="1.8"/><path d="M14 14 L576 14 L576 112 L295 316 L14 112 Z" fill="none" stroke="rgba(255,240,205,.5)" stroke-width="1.2" stroke-dasharray="6 5"/></svg>
+
+    <div class="label">
+      <div class="case">The four books</div>
+      <div class="title">Reopen the Record<i>Australian History from the Evidence</i></div>
+    </div>
+    <div class="stamp">CASE<br>REOPENED</div>
+    <div class="coffee"></div><div class="coffee2"></div>
+
+    <svg style="position:absolute;left:0;top:0;overflow:visible" width="590" height="900" viewBox="0 0 590 900" aria-hidden="true">
+      <defs><radialGradient id="btn" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#f1e1b5"/><stop offset="1" stop-color="#b99a5b"/></radialGradient>
+      <linearGradient id="str" x1="0" x2="1"><stop offset="0" stop-color="#8f1d16"/><stop offset=".5" stop-color="#d23a2d"/><stop offset="1" stop-color="#8f1d16"/></linearGradient></defs>
+      <g transform="translate(295 372)"><ellipse cx="3" cy="6" rx="31" ry="30" fill="rgba(50,25,5,.35)" filter="url(#soft)"/><circle r="31" fill="url(#btn)" stroke="#8c7340" stroke-width="2"/><circle r="23" fill="none" stroke="#9a7f45" stroke-width="1.5"/><circle cx="-6" cy="-6" r="2.6" fill="#6f5a2c"/><circle cx="6" cy="-6" r="2.6" fill="#6f5a2c"/><circle cx="-6" cy="6" r="2.6" fill="#6f5a2c"/><circle cx="6" cy="6" r="2.6" fill="#6f5a2c"/></g>
+      <g fill="none" stroke="url(#str)" stroke-width="4.2" stroke-linecap="round">
+        <ellipse cx="295" cy="372" rx="38" ry="36" transform="rotate(14 295 372)"/>
+        <ellipse cx="295" cy="372" rx="40" ry="33" transform="rotate(-28 295 372)"/>
+        <ellipse cx="295" cy="372" rx="36" ry="38" transform="rotate(60 295 372)"/>
+        <ellipse cx="295" cy="372" rx="42" ry="35" transform="rotate(-70 295 372)"/>
+        <path d="M295 336 C 292 318 300 308 295 292"/>
+        <path d="M295 336 C 308 322 286 306 297 290" stroke-width="3.2"/>
+        <path d="M331 378 C 352 392 372 398 378 414 C 384 430 366 438 358 428" stroke-width="3.4"/>
+      </g>
+      <g transform="translate(295 292)"><ellipse cx="3" cy="6" rx="26" ry="25" fill="rgba(50,25,5,.35)" filter="url(#soft)"/><circle r="26" fill="url(#btn)" stroke="#8c7340" stroke-width="2"/><circle r="19" fill="none" stroke="#9a7f45" stroke-width="1.4"/><circle cx="-5" cy="-5" r="2.3" fill="#6f5a2c"/><circle cx="5" cy="-5" r="2.3" fill="#6f5a2c"/><circle cx="-5" cy="5" r="2.3" fill="#6f5a2c"/><circle cx="5" cy="5" r="2.3" fill="#6f5a2c"/></g>
+      <g fill="none" stroke="url(#str)" stroke-width="4.2" stroke-linecap="round"><ellipse cx="295" cy="292" rx="31" ry="29" transform="rotate(20 295 292)"/><ellipse cx="295" cy="292" rx="33" ry="27" transform="rotate(-35 295 292)"/><ellipse cx="295" cy="292" rx="29" ry="31" transform="rotate(70 295 292)"/></g>
+    </svg>
+  </div>
+  <div class="tabs">
+    <a class="tab" href="#book-one"><span>Before the Ships</span><span>The Claim</span><span>Gold and Who Belongs</span><span>Federation</span></a>
+    <a class="tab" href="#book-two"><span>The Frontier</span><span>Gold and Who Belongs</span></a>
+    <a class="tab" href="#book-three"><span>A Nation, and Who Is In It</span></a>
+    <a class="tab" href="#book-four"><span>Taken</span><span>After the War</span><span>Native Title</span><span>The Record Is Still Open</span></a>
+  </div>
+  <div class="grain"></div><div class="vig"></div>
+</div>
+  </div>
+</section>
+<nav class='story-tabs' aria-label='The four books'>
+<a class='story-tab' href='#book-one' style='background:#8B3419'><span>Before the Ships</span><span>The Claim</span><span>Gold and Who Belongs</span><span>Federation</span></a>
+<a class='story-tab' href='#book-two' style='background:#6A4A12'><span>The Frontier</span><span>Gold and Who Belongs</span></a>
+<a class='story-tab' href='#book-three' style='background:#334226'><span>A Nation, and Who Is In It</span></a>
+<a class='story-tab' href='#book-four' style='background:#5A2A3A'><span>Taken</span><span>After the War</span><span>Native Title</span><span>The Record Is Still Open</span></a>
+</nav>
+<main class='web-contents' id='contents'>
+<header class="contents-head">
+  <p class="series">Reopen the Record</p>
+  <h1>The four books</h1>
+  <p>Australian History from the Evidence</p>
+</header>
+<div class='web-grid'>
+<article class="book" id="book-one" style="--book:#8B3419;--tint:#F6EBE4">
+  <header>
+    <span class="pg">76 pages</span>
+    <p class="kicker">BOOK ONE</p>
+    
+  </header>
+  <div class="body">
+    <div class="row part"><span class="ttl">Part One  ·  Before the Ships</span><span class="dots"></span><span class="num">3</span></div>
+<div class="row ch"><span class="ttl">Deep Time <span class="sub">— How long have people been here?</span></span><span class="dots"></span><span class="num">4</span></div>
+<div class="row ch"><span class="ttl">The Plate at Cape Inscription, 1616 <span class="sub">— A ship stops for two days</span></span><span class="dots"></span><span class="num">6</span></div>
+<div class="row ch"><span class="ttl">Batavia, 1629 <span class="sub">— The wreck and the mutiny</span></span><span class="dots"></span><span class="num">8</span></div>
+<div class="row ch"><span class="ttl">From the West Coast to Kamay <span class="sub">— 1768 and 1770</span></span><span class="dots"></span><span class="num">12</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/before-the-ships">robmac10.github.io/before-the-ships</a></span><span class="dots"></span><span class="num">14</span></div>
+<div class="row part"><span class="ttl">Part Two  ·  The Claim</span><span class="dots"></span><span class="num">15</span></div>
+<div class="row ch"><span class="ttl">Kamay <span class="sub">— April and May 1770</span></span><span class="dots"></span><span class="num">16</span></div>
+<div class="row ch"><span class="ttl">Possession Island <span class="sub">— August 1770</span></span><span class="dots"></span><span class="num">19</span></div>
+<div class="row ch"><span class="ttl">Botany Bay and Warrane <span class="sub">— 1787 and 1788</span></span><span class="dots"></span><span class="num">24</span></div>
+<div class="row ch"><span class="ttl">Arabanoo <span class="sub">— December 1788 to May 1789</span></span><span class="dots"></span><span class="num">27</span></div>
+<div class="row ch"><span class="ttl">Bennelong and Barangaroo <span class="sub">— 1789 to 1795</span></span><span class="dots"></span><span class="num">31</span></div>
+<div class="row ch"><span class="ttl">Pemulwuy <span class="sub">— 1790 to 1802</span></span><span class="dots"></span><span class="num">35</span></div>
+<div class="row ch"><span class="ttl">Bungaree <span class="sub">— Around the continent, 1802 to 1803</span></span><span class="dots"></span><span class="num">40</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/the-claim">robmac10.github.io/the-claim</a></span><span class="dots"></span><span class="num">49</span></div>
+<div class="row part"><span class="ttl">Part Three  ·  Gold and Who Belongs</span><span class="dots"></span><span class="num">50</span></div>
+<div class="row ch"><span class="ttl">Eureka <span class="sub">— Ballarat, 1854</span></span><span class="dots"></span><span class="num">51</span></div>
+<div class="row ch"><span class="ttl">The Walk from Robe <span class="sub">— 1855 to 1857</span></span><span class="dots"></span><span class="num">53</span></div>
+<div class="row ch"><span class="ttl">Lambing Flat <span class="sub">— 1860 and 1861</span></span><span class="dots"></span><span class="num">54</span></div>
+<div class="row ch"><span class="ttl">Coranderrk <span class="sub">— 1863 to 1886</span></span><span class="dots"></span><span class="num">56</span></div>
+<div class="row ch"><span class="ttl">Torres Strait <span class="sub">— 1879</span></span><span class="dots"></span><span class="num">57</span></div>
+<div class="row ch"><span class="ttl">Jandamarra <span class="sub">— The Kimberley, 1894 to 1897</span></span><span class="dots"></span><span class="num">59</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/gold-who-belongs">robmac10.github.io/gold-who-belongs</a></span><span class="dots"></span><span class="num">60</span></div>
+<div class="row part"><span class="ttl">Part Four  ·  Federation</span><span class="dots"></span><span class="num">61</span></div>
+<div class="row ch"><span class="ttl">One Nation <span class="sub">— 1901</span></span><span class="dots"></span><span class="num">62</span></div>
+<div class="row ch"><span class="ttl">The Dictation Test <span class="sub">— 1901</span></span><span class="dots"></span><span class="num">64</span></div>
+<div class="row ch"><span class="ttl">Epilogue: The Vote <span class="sub">— 1894 to 1902</span></span><span class="dots"></span><span class="num">65</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/federation-case">robmac10.github.io/federation-case</a></span><span class="dots"></span><span class="num">67</span></div>
+<div class="row end"><span class="ttl">Sources</span><span class="dots"></span><span class="num">68</span></div>
+<div class="row end"><span class="ttl">Image credits</span><span class="dots"></span><span class="num">75</span></div>
+  </div>
+</article>
+<article class="book" id="book-two" style="--book:#6A4A12;--tint:#F6F0E0">
+  <header>
+    <span class="pg">82 pages</span>
+    <p class="kicker">BOOK TWO</p>
+    <p class="line">The Story So Far · The Frontier · Gold and Who Belongs</p>
+  </header>
+  <div class="body">
+    <div class="row ch"><span class="ttl">The Story So Far <span class="sub">— Book One, from deep time to 1901</span></span><span class="dots"></span><span class="num">3</span></div>
+<div class="row part"><span class="ttl">Part One  ·  The Frontier</span><span class="dots"></span><span class="num">7</span></div>
+<div class="row ch"><span class="ttl">Risdon Cove <span class="sub">— May 1804</span></span><span class="dots"></span><span class="num">8</span></div>
+<div class="row ch"><span class="ttl">The Hawkesbury and Appin <span class="sub">— 1794 to 1816</span></span><span class="dots"></span><span class="num">11</span></div>
+<div class="row ch"><span class="ttl">Martial Law at Bathurst <span class="sub">— 1824</span></span><span class="dots"></span><span class="num">14</span></div>
+<div class="row ch"><span class="ttl">Van Diemen’s Land <span class="sub">— The Black War, 1824 to 1832</span></span><span class="dots"></span><span class="num">16</span></div>
+<div class="row ch"><span class="ttl">Pinjarra <span class="sub">— October 1834</span></span><span class="dots"></span><span class="num">19</span></div>
+<div class="row ch"><span class="ttl">Batman’s Treaty <span class="sub">— Port Phillip, 1835</span></span><span class="dots"></span><span class="num">21</span></div>
+<div class="row ch"><span class="ttl">South Australia <span class="sub">— Letters Patent, February 1836</span></span><span class="dots"></span><span class="num">23</span></div>
+<div class="row ch"><span class="ttl">Eliza Fraser <span class="sub">— K’gari, 1836</span></span><span class="dots"></span><span class="num">25</span></div>
+<div class="row ch"><span class="ttl">Waterloo Creek <span class="sub">— January 1838</span></span><span class="dots"></span><span class="num">27</span></div>
+<div class="row ch"><span class="ttl">Myall Creek <span class="sub">— June to December 1838</span></span><span class="dots"></span><span class="num">29</span></div>
+<div class="row ch"><span class="ttl">Eumeralla <span class="sub">— The western district, 1840s</span></span><span class="dots"></span><span class="num">32</span></div>
+<div class="row ch"><span class="ttl">The Native Police <span class="sub">— 1837 to 1861</span></span><span class="dots"></span><span class="num">34</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/the-frontier">robmac10.github.io/the-frontier</a></span><span class="dots"></span><span class="num">36</span></div>
+<div class="row part"><span class="ttl">Part Two  ·  Gold and Who Belongs</span><span class="dots"></span><span class="num">37</span></div>
+<div class="row ch"><span class="ttl">Eureka <span class="sub">— Ballarat, 1851 to 1855</span></span><span class="dots"></span><span class="num">38</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/who-fired-first">robmac10.github.io/who-fired-first</a></span><span class="dots"></span><span class="num">42</span></div>
+<div class="row ch"><span class="ttl">The Walk from Robe <span class="sub">— 1855 to 1857</span></span><span class="dots"></span><span class="num">44</span></div>
+<div class="row ch"><span class="ttl">Lambing Flat <span class="sub">— Burrangong, New South Wales, 1860 to 1861</span></span><span class="dots"></span><span class="num">47</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/lambing-flat-case">robmac10.github.io/lambing-flat-case</a></span><span class="dots"></span><span class="num">50</span></div>
+<div class="row ch"><span class="ttl">Cooper Creek <span class="sub">— Yandruwandha Country, 1860 to 1861</span></span><span class="dots"></span><span class="num">51</span></div>
+<div class="row ch"><span class="ttl">The Cameleers <span class="sub">— 1860 to 1901</span></span><span class="dots"></span><span class="num">55</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/cameleers-case">robmac10.github.io/cameleers-case</a></span><span class="dots"></span><span class="num">57</span></div>
+<div class="row ch"><span class="ttl">The Labour Trade <span class="sub">— Queensland, 1863 to 1906</span></span><span class="dots"></span><span class="num">58</span></div>
+<div class="row ch"><span class="ttl">Coranderrk <span class="sub">— Kulin Country, 1863 to 1886</span></span><span class="dots"></span><span class="num">61</span></div>
+<div class="row ch"><span class="ttl">Protection <span class="sub">— 1869 onward</span></span><span class="dots"></span><span class="num">65</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/protection-case">robmac10.github.io/protection-case</a></span><span class="dots"></span><span class="num">67</span></div>
+<div class="row ch"><span class="ttl">The Torres Strait <span class="sub">— Mer, 1860s to 1879</span></span><span class="dots"></span><span class="num">68</span></div>
+<div class="row ch"><span class="ttl">Jandamarra <span class="sub">— Bunuba Country, the Kimberley, 1884 to 1897</span></span><span class="dots"></span><span class="num">72</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/gold-who-belongs">robmac10.github.io/gold-who-belongs</a></span><span class="dots"></span><span class="num">75</span></div>
+<div class="row end"><span class="ttl">Sources</span><span class="dots"></span><span class="num">76</span></div>
+  </div>
+</article>
+<article class="book" id="book-three" style="--book:#334226;--tint:#EEF1E6">
+  <header>
+    <span class="pg">30 pages</span>
+    <p class="kicker">BOOK THREE</p>
+    <p class="line">The Story So Far · A Nation, and Who Is In It</p>
+  </header>
+  <div class="body">
+    <div class="row ch"><span class="ttl">The Story So Far <span class="sub">— Books One and Two, from deep time to 1901</span></span><span class="dots"></span><span class="num">3</span></div>
+<div class="row part"><span class="ttl">Part One  ·  A Nation, and Who Is In It</span><span class="dots"></span><span class="num">7</span></div>
+<div class="row ch"><span class="ttl">The Vote for Women <span class="sub">— South Australia and Western Australia, 1894 to 1899</span></span><span class="dots"></span><span class="num">8</span></div>
+<div class="row ch"><span class="ttl">Federation <span class="sub">— 1 January 1901</span></span><span class="dots"></span><span class="num">10</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/federation-case">robmac10.github.io/federation-case</a></span><span class="dots"></span><span class="num">12</span></div>
+<div class="row ch"><span class="ttl">The Dictation Test <span class="sub">— 1901</span></span><span class="dots"></span><span class="num">12</span></div>
+<div class="row ch"><span class="ttl">Who Counts <span class="sub">— 1902 to 1912</span></span><span class="dots"></span><span class="num">13</span></div>
+<div class="row ch"><span class="ttl">Broken Hill <span class="sub">— 1 January 1915</span></span><span class="dots"></span><span class="num">16</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/broken-hill-case">robmac10.github.io/broken-hill-case</a></span><span class="dots"></span><span class="num">18</span></div>
+<div class="row ch"><span class="ttl">Gallipoli and Fromelles <span class="sub">— 1915 to 1916</span></span><span class="dots"></span><span class="num">19</span></div>
+<div class="row ch"><span class="ttl">The Conscription Votes <span class="sub">— 1916 to 1917</span></span><span class="dots"></span><span class="num">22</span></div>
+<div class="row ch"><span class="ttl">Coniston <span class="sub">— 1928</span></span><span class="dots"></span><span class="num">24</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/a-nation">robmac10.github.io/a-nation</a></span><span class="dots"></span><span class="num">27</span></div>
+<div class="row end"><span class="ttl">Sources</span><span class="dots"></span><span class="num">28</span></div>
+  </div>
+</article>
+<article class="book" id="book-four" style="--book:#5A2A3A;--tint:#F3EAEE">
+  <header>
+    <span class="pg">47 pages</span>
+    <p class="kicker">BOOK FOUR</p>
+    <p class="line">The Story So Far · Taken · After the War · Native Title · The Record Is Still Open</p>
+  </header>
+  <div class="body">
+    <div class="row ch"><span class="ttl">The Story So Far <span class="sub">— Books One to Three, from deep time to 1928</span></span><span class="dots"></span><span class="num">3</span></div>
+<div class="row part"><span class="ttl">Part One  ·  Taken</span><span class="dots"></span><span class="num">6</span></div>
+<div class="row ch"><span class="ttl">The Protection Acts <span class="sub">— 1897 to 1915</span></span><span class="dots"></span><span class="num">7</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/protection-case">robmac10.github.io/protection-case</a></span><span class="dots"></span><span class="num">8</span></div>
+<div class="row ch"><span class="ttl">Absorption <span class="sub">— 1937</span></span><span class="dots"></span><span class="num">9</span></div>
+<div class="row ch"><span class="ttl">The Day of Mourning <span class="sub">— 26 January 1938, and Cummeragunja, February 1939</span></span><span class="dots"></span><span class="num">10</span></div>
+<div class="row ch"><span class="ttl">Bringing Them Home <span class="sub">— 1995 to 1997</span></span><span class="dots"></span><span class="num">13</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/taken">robmac10.github.io/taken</a></span><span class="dots"></span><span class="num">14</span></div>
+<div class="row part"><span class="ttl">Part Two  ·  After the War</span><span class="dots"></span><span class="num">15</span></div>
+<div class="row ch"><span class="ttl">The Centaur <span class="sub">— 14 May 1943</span></span><span class="dots"></span><span class="num">16</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/centaur-case">robmac10.github.io/centaur-case</a></span><span class="dots"></span><span class="num">16</span></div>
+<div class="row ch"><span class="ttl">Citizens <span class="sub">— 1944 to 1962</span></span><span class="dots"></span><span class="num">17</span></div>
+<div class="row ch"><span class="ttl">The Yirrkala Bark Petitions <span class="sub">— 1963</span></span><span class="dots"></span><span class="num">19</span></div>
+<div class="row ch"><span class="ttl">The Freedom Ride <span class="sub">— February 1965</span></span><span class="dots"></span><span class="num">21</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/freedom-ride-case">robmac10.github.io/freedom-ride-case</a></span><span class="dots"></span><span class="num">22</span></div>
+<div class="row ch"><span class="ttl">Wave Hill <span class="sub">— 1966 to 1975</span></span><span class="dots"></span><span class="num">23</span></div>
+<div class="row ch"><span class="ttl">The Referendum <span class="sub">— 27 May 1967</span></span><span class="dots"></span><span class="num">25</span></div>
+<div class="row ch"><span class="ttl">The Tent Embassy <span class="sub">— 26 January 1972</span></span><span class="dots"></span><span class="num">27</span></div>
+<div class="row ch"><span class="ttl">Deaths in Custody <span class="sub">— 1987 to 1991</span></span><span class="dots"></span><span class="num">28</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/after-the-war">robmac10.github.io/after-the-war</a></span><span class="dots"></span><span class="num">29</span></div>
+<div class="row part"><span class="ttl">Part Three  ·  Native Title</span><span class="dots"></span><span class="num">30</span></div>
+<div class="row ch"><span class="ttl">Mabo <span class="sub">— 1982 to 1992</span></span><span class="dots"></span><span class="num">31</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/mabo-case">robmac10.github.io/mabo-case</a></span><span class="dots"></span><span class="num">32</span></div>
+<div class="row ch"><span class="ttl">The Native Title Act <span class="sub">— 1993</span></span><span class="dots"></span><span class="num">33</span></div>
+<div class="row ch"><span class="ttl">Wik <span class="sub">— 1996 to 1998</span></span><span class="dots"></span><span class="num">34</span></div>
+<div class="row ch"><span class="ttl">The Intervention and the Apology <span class="sub">— 2007 to 2008</span></span><span class="dots"></span><span class="num">36</span></div>
+<div class="row qr"><span class="ttl"><span class="badge">QR</span><a href="https://robmac10.github.io/native-title">robmac10.github.io/native-title</a></span><span class="dots"></span><span class="num">38</span></div>
+<div class="row part"><span class="ttl">Coda  ·  The Record Is Still Open</span><span class="dots"></span><span class="num">39</span></div>
+<div class="row ch"><span class="ttl">The Record Is Still Open <span class="sub">— 2017 to 2025</span></span><span class="dots"></span><span class="num">40</span></div>
+<div class="row end"><span class="ttl">Sources</span><span class="dots"></span><span class="num">43</span></div>
+  </div>
+</article>
+</div>
+<p class='care'>Aboriginal and Torres Strait Islander readers are advised that these books name people who have died.</p>
+<p class='pdf-link'><a href='series-contents.pdf'>Download a PDF of the title page and contents</a></p>
+</main>
+<script>
+(function () {
+  var frame = document.querySelector('.cover-frame');
+  var inner = frame && frame.querySelector('.cover-inner');
+  if (!frame || !inner) return;
+  function fit() {
+    var s = frame.clientWidth / 794;
+    inner.style.transform = 'scale(' + s + ')';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+})();
+</script>
+</body></html>
