@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parent
 SRC = Path("/workspace/muse/extracted/book-one-timeline.html")
 OUT = ROOT / "index.html"
 QR_URL = "https://robmac10.github.io/the-story-contents/book-one/"
+ASSET_V = "20261127a"
 
 def make_qr():
     qr = qrcode.QRCode(error_correction=ERROR_CORRECT_M, box_size=10, border=2)
@@ -78,13 +79,17 @@ EXTRA_CSS = """
     max-width:1120px;margin:0 auto;padding:8px 20px 48px;color:var(--muted);font-size:.88rem;
   }
   footer.site a{color:var(--sea)}
+  figcaption .credit{
+    display:block;margin-top:.45em;font-size:.88em;line-height:1.4;color:var(--muted);
+  }
+  figcaption .credit a{color:var(--sea)}
 """
 
 NOTICE = """
 <nav class="topnav">
   <a href="../">← The four books</a>
   <div class="qrbox">
-    <img src="assets/book-one-timeline-qr.png" width="72" height="72" alt="QR code for this Book One timeline">
+    <img src="assets/book-one-timeline-qr.png?v=20261127a" width="72" height="72" alt="QR code for this Book One timeline">
     <span>Open on a phone: this page. The code does not go to a case file.</span>
   </div>
 </nav>
@@ -100,7 +105,7 @@ FOOT = """
     <p>This page is a Book One timeline for <i>Reopen the Record: Australian Histories</i>. It was rebuilt from a writing draft so that it matches the other companion pages: images stay on the screen and tap to enlarge, there is no audio, and student cards do not carry year levels or case numbers. Book chapter labels (for example “Book One · Ch. 1”) stay, because they point to the book, not to a case number.</p>
     <p>A Kakadu rock-art photograph was in the writing draft, as the opening image for Madjedbebe. It has been left out, in line with the series rule against showing rock art. The dating dispute (about 65,000 years, or about 50,000–55,000 years) is unchanged: both findings are on the card, and students are left to weigh them.</p>
     <p>The Blue Mountains stop (May 1813 — Blaxland, Lawson and Wentworth) now has a published case in the casebook reader: <a href="https://robmac10.github.io/reopen-the-record/#p=70" target="_blank" rel="noopener">Crossing the Blue Mountains, from page 70</a>. The four paper-and-flag steps of the British claim (1770–1829) have their own case in the same reader: <a href="https://robmac10.github.io/reopen-the-record/#p=37" target="_blank" rel="noopener">Britain Claims Australia, from page 37</a>. The two investigations are related in time, but they are not the same file. The Claim story app remains the companion for the landing at Kamay, Possession Island, and the early years of the colony.</p>
-    <p>Image notes: Lake Mungo shows the dry lake and lunette, not ancestral remains. The Hartog plate, the Batavia stern and gateway, the Eureka flag, and Tom Roberts’s 1903 painting of the opening of the first Commonwealth Parliament are objects or a public historical painting, each captioned on the card. Confirm reuse rights before any print edition.</p>
+    <p>Image notes: Lake Mungo shows the dry lake and lunette, not ancestral remains. Each image on the cards now has a credit and licence line. The Eureka image is Raffaello Carboni’s 1855 illustration, not a photograph of the conserved flag. The Federation image is a public-domain photograph, about 1903, of Tom Roberts at work on the painting, not a modern colour photograph of the finished canvas. A Kakadu rock-art photograph remains omitted.</p>
     <p>Curriculum links and year levels belong in teacher planning, not on the student cards. Companion case apps open in a new tab.</p>
   </details>
 </section>
@@ -170,6 +175,80 @@ def main():
         count=1,
         flags=re.S,
     )
+
+    # Credits and licence lines, and any file replacements, so a Muse rebuild keeps them.
+    def vsrc(name):
+        return f"assets/{name}?v={ASSET_V}"
+
+    def clink(href, label):
+        return f'<a href="{href}" target="_blank" rel="noopener">{label}</a>'
+
+    CC0 = clink("https://creativecommons.org/publicdomain/zero/1.0/", "CC0 1.0")
+    CCBYSA = clink("https://creativecommons.org/licenses/by-sa/4.0/", "CC BY-SA 4.0")
+    IMAGE_RIGHTS = {
+        "lake-mungo.png": {
+            "src": "lake-mungo.jpg",
+            "alt": "The eroded lunettes known as the Walls of China at Lake Mungo, in evening light",
+            "caption": "Lake Mungo at evening — the dry lake where the oldest human remains in Australia were found.",
+            "credit": "Photograph: Caroline Jones, 7 June 2016, via Flickr / "
+                      + clink("https://commons.wikimedia.org/wiki/File:Walls_of_China_in_Mungo_National_Park_(27464678334).jpg", "Wikimedia Commons")
+                      + f". {CC0}.",
+        },
+        "hartog-plate.jpg": {
+            "src": "hartog-plate.jpg",
+            "alt": "The weathered pewter Hartog plate of 1616, its Dutch inscription still partly legible",
+            "caption": "The Hartog plate, 1616 — now in the Rijksmuseum, Amsterdam.",
+            "credit": "Dirck Hartogh dish, 1616, "
+                      + clink("https://id.rijksmuseum.nl/200311613", "Rijksmuseum, Amsterdam")
+                      + ", object NG-NM-825. Photograph: Rijksmuseum, "
+                      + clink("https://commons.wikimedia.org/wiki/File:Dirck_Hartogh-schotel,_NG-NM-825.jpg", "via Wikimedia Commons")
+                      + f". {CC0}. Credit: Rijksmuseum, Amsterdam.",
+        },
+        "batavia.jpg": {
+            "src": "batavia.jpg",
+            "alt": "The recovered stern of the Batavia and the stone gateway in the Shipwreck Galleries, Fremantle",
+            "caption": "The Batavia’s stern and the stone gateway it was carrying — Shipwreck Galleries, Fremantle.",
+            "credit": "Photograph: Vunz, 18 November 2014, "
+                      + clink("https://commons.wikimedia.org/wiki/File:Shipwreck_Galleries,_Fremantle,_WA.JPG", "Wikimedia Commons")
+                      + f". {CCBYSA}. This copy has been resized.",
+        },
+        "eureka-flag.jpg": {
+            "src": "eureka-flag.jpg",
+            "alt": "Raffaello Carboni’s 1855 illustration of the Eureka flag, a cross and stars within a floral border",
+            "caption": "The Eureka flag, as illustrated on the cover of Raffaello Carboni’s <i>The Eureka Stockade</i>, 1855 — the flag was flown at Bakery Hill on 30 November 1854.",
+            "credit": "Raffaello Carboni, <i>The Eureka Stockade</i>, 1855. Public domain. "
+                      + clink("https://commons.wikimedia.org/wiki/File:Carboni_Eureka_flag_illustration.png", "Wikimedia Commons") + ".",
+        },
+        "federation.jpg": {
+            "src": "federation.jpg",
+            "alt": "Photograph, about 1903, of Tom Roberts sitting beside his unfinished painting of the opening of the first Commonwealth Parliament, in the Royal Exhibition Building, Melbourne",
+            "caption": "Tom Roberts at work on <i>The Opening of the First Parliament of the Commonwealth of Australia</i>, 9 May 1901, in the Royal Exhibition Building, Melbourne. The painting was completed in 1903. Photograph, about 1903.",
+            "credit": "Gelatin silver print, about 1903, Mitchell Library, State Library of New South Wales. Public domain (Australia). Please acknowledge the Mitchell Library, State Library of New South Wales. "
+                      + clink("https://commons.wikimedia.org/wiki/File:TomRobertsUnfinished.jpg", "Wikimedia Commons") + ".",
+        },
+    }
+
+    def apply_rights(m):
+        fname = m.group(1)
+        info = IMAGE_RIGHTS.get(fname)
+        if not info:
+            return m.group(0)
+        img = (
+            f'<img src="{vsrc(info["src"])}" alt="{info["alt"]}" loading="lazy" />'
+        )
+        cap = f'{info["caption"]} <span class="credit">{info["credit"]}</span>'
+        return f"<figure>\n        {img}\n        <figcaption>{cap}</figcaption>\n      </figure>"
+
+    html, n_rights = re.subn(
+        r'<figure>\s*<img src="assets/([^"?]+)[^>]*>\s*<figcaption>(.*?)</figcaption>\s*</figure>',
+        apply_rights,
+        html,
+        flags=re.S,
+    )
+    if n_rights != 5:
+        raise SystemExit(f"timeline builder: expected 5 credited figures, applied {n_rights}")
+    if "lake-mungo.png" in html:
+        raise SystemExit("timeline builder: old Lake Mungo filename still present")
 
     # Wrap remaining figures' images for lightbox
     def wrap_fig(m):
@@ -252,9 +331,21 @@ def main():
     # sanity
     text = OUT.read_text(encoding="utf-8")
     assert "rock-art.jpg" not in text
+    assert "lake-mungo.png" not in text
     assert "noindex" in text
     assert "Year 9" not in text
     assert "lightbox" in text
+    assert f"v={ASSET_V}" in text
+    assert "CC0 1.0" in text
+    assert "Rijksmuseum, Amsterdam" in text
+    assert "CC BY-SA 4.0" in text
+    assert "Vunz" in text
+    assert "Raffaello Carboni" in text
+    assert "The Eureka Stockade" in text
+    assert "The original Eureka flag, conserved" not in text
+    assert "Mitchell Library, State Library of New South Wales" in text
+    assert "Robin" not in text
+    assert "McKean" not in text
     assert "reopen-the-record/#p=37" in text
     assert "reopen-the-record/#p=70" in text
     assert text.count("reopen-the-record/#p=37") >= 3  # three claim cards plus teacher note
