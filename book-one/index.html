@@ -1,0 +1,829 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Deep Time to Federation · Book One timeline · Reopen the Record</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Book One timeline for Reopen the Record: Australian Histories, from deep time to Federation and the vote in 1902.">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    color-scheme: light dark;
+    --paper:#f6efe1;
+    --paper-2:#efe4cd;
+    --card:#fffaf0;
+    --ink:#241b10;
+    --ink-soft:#4a3d2b;
+    --muted:#77664d;
+    --line:#d8c9a6;
+    --ochre:#a35a10;
+    --rust:#8f3a1e;
+    --gum:#4c5f3a;
+    --sea:#1e4f4a;
+    --gold:#7d5f0e;
+    --plum:#5d3a2a;
+    --accent:var(--ochre);
+    --shadow:0 1px 2px rgba(60,40,10,.08),0 10px 28px rgba(60,40,10,.10);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#17120c;
+      --paper-2:#1f1811;
+      --card:#231b12;
+      --ink:#f2e8d5;
+      --ink-soft:#d9cbae;
+      --muted:#a8977a;
+      --line:#3d3222;
+      --ochre:#e09a3e;
+      --rust:#e07a52;
+      --gum:#a3bd7f;
+      --sea:#6fc2b8;
+      --gold:#e3c15c;
+      --plum:#d29a7a;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important;animation:none!important} }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:17px;line-height:1.55}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  .serif{font-family:"Newsreader",Georgia,serif}
+
+  /* scroll progress */
+  #progress{position:fixed;top:0;left:0;height:4px;background:var(--ochre);width:0%;z-index:60}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:#120d08;color:#f6efe1}
+  .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+  .hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,3,.35) 0%,rgba(10,6,3,.55) 55%,rgba(10,6,3,.88) 100%)}
+  .hero-inner{position:relative;max-width:1120px;margin:0 auto;padding:56px 20px 44px}
+  .kicker{font-family:"IBM Plex Mono",monospace;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#f0c98a;margin:0 0 14px}
+  .hero h1{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:clamp(2.4rem,6.5vw,4.3rem);line-height:1.02;margin:0 0 6px;letter-spacing:-.01em}
+  .hero h1 em{font-style:italic;font-weight:500;color:#f0c98a}
+  .hero .sub{font-family:"Newsreader",Georgia,serif;font-size:clamp(1.15rem,2.6vw,1.5rem);font-style:italic;color:#e9dcc0;margin:0 0 18px;max-width:34em}
+  .hero p.lede{max-width:44em;color:#efe6d2;margin:0 0 22px;font-size:1.02rem}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px}
+  .stat{background:rgba(246,239,225,.10);border:1px solid rgba(246,239,225,.28);border-radius:10px;padding:10px 14px;min-width:104px}
+  .stat b{display:block;font-family:"Newsreader",serif;font-size:1.55rem;line-height:1;color:#fff}
+  .stat span{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:#d9cbae}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:12px 20px;border-radius:999px;font-weight:700;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer}
+  .btn-solid{background:#f0c98a;color:#241703}
+  .btn-ghost{background:transparent;color:#f6efe1;border-color:rgba(246,239,225,.5)}
+  .hero-credit{position:relative;max-width:1120px;margin:0 auto;padding:0 20px 14px;font-size:.78rem;color:rgba(246,239,225,.65)}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* care note */
+  .care{margin:26px auto 0;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+  .care .mark{font-family:"Newsreader",serif;font-size:1.5rem;line-height:1;color:var(--rust);flex:none}
+  .care p{margin:0;font-size:.94rem;color:var(--ink-soft)}
+  .care p b{color:var(--ink)}
+
+  /* ---------- rope / scale ---------- */
+  .scale{margin:34px auto 6px}
+  .scale h2,.apps-index h2,.howto h2{font-family:"Newsreader",serif;font-weight:600;font-size:clamp(1.5rem,3.4vw,2rem);margin:0 0 8px;line-height:1.15}
+  .scale p{color:var(--ink-soft);max-width:46em;margin:0 0 16px}
+  .rope{display:flex;height:54px;border-radius:10px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .rope .deep{flex:1;background:repeating-linear-gradient(45deg,var(--paper-2),var(--paper-2) 10px,var(--card) 10px,var(--card) 20px);display:flex;align-items:center;padding:0 14px;font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-soft);min-width:0}
+  .rope .recent{flex:none;width:15%;min-width:118px;background:var(--ochre);color:#fff8ec;display:flex;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:.78rem;font-weight:600;text-align:center;padding:0 6px}
+  .scale .note{font-size:.88rem;color:var(--muted);margin-top:10px}
+  .scale .note b{color:var(--ink)}
+
+  /* ---------- sticky filter ---------- */
+  .filterbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-top:30px}
+  .filterbar-inner{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .filterbar .now{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--muted);margin-right:2px}
+  .chip{min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);font:inherit;font-size:.92rem;font-weight:700;cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .chip:focus-visible,.btn:focus-visible,a.appbtn:focus-visible{outline:3px solid var(--ochre);outline-offset:2px}
+
+  /* ---------- part dividers ---------- */
+  .part{margin:52px auto 8px;display:grid;grid-template-columns:1fr;gap:16px;align-items:end;scroll-margin-top:96px}
+  .apps-index{scroll-margin-top:96px}
+  @media(min-width:820px){.part{grid-template-columns:1.5fr 1fr}}
+  .part .pnum{font-family:"IBM Plex Mono",monospace;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px}
+  .part h2{font-family:"Newsreader",serif;font-weight:600;font-size:clamp(1.9rem,4.6vw,2.7rem);line-height:1.05;margin:0 0 8px}
+  .part .pdesc{color:var(--ink-soft);margin:0;max-width:38em}
+  .part-app{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+  .part-app .lbl{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+  .part-app h3{font-family:"Newsreader",serif;font-size:1.25rem;margin:0 0 4px;font-weight:600}
+  .part-app p{margin:0 0 12px;font-size:.92rem;color:var(--ink-soft)}
+  a.appbtn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:11px 18px;border-radius:999px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:700;font-size:.94rem}
+  a.appbtn.light{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  a.appbtn.small{min-height:42px;padding:9px 14px;font-size:.88rem}
+  .part[data-part="1"]{--accent:var(--ochre)} .part[data-part="2"]{--accent:var(--sea)}
+  .part[data-part="3"]{--accent:var(--gold)} .part[data-part="4"]{--accent:var(--rust)}
+  .part .pnum{color:var(--accent)}
+  .part-app{border-top:4px solid var(--accent)}
+
+  /* ---------- timeline ---------- */
+  .tl{position:relative;max-width:1120px;margin:26px auto 0;padding:10px 20px 10px}
+  .tl::before{content:"";position:absolute;top:0;bottom:0;left:31px;width:3px;background:var(--line);border-radius:2px}
+  #fill{position:absolute;top:0;left:31px;width:3px;background:var(--ochre);border-radius:2px;height:0}
+  @media(min-width:860px){ .tl::before{left:50%;margin-left:-1.5px} #fill{left:50%;margin-left:-1.5px} }
+  .stop{position:relative;padding:0 0 26px 58px}
+  @media(min-width:860px){
+    .stop{width:50%;padding:0 44px 34px 0}
+    .stop.r{margin-left:50%;padding:0 0 34px 44px}
+  }
+  .dot{position:absolute;top:22px;left:31px;transform:translateX(-50%);width:17px;height:17px;border-radius:50%;background:var(--paper);border:3.5px solid var(--accent,var(--ochre));z-index:2}
+  @media(min-width:860px){ .stop .dot{left:auto;right:0;transform:translateX(50%)} .stop.r .dot{left:0;right:auto;transform:translateX(-50%)} }
+  .stop[data-part="1"]{--accent:var(--ochre)} .stop[data-part="2"]{--accent:var(--sea)}
+  .stop[data-part="3"]{--accent:var(--gold)} .stop[data-part="4"]{--accent:var(--rust)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .card figure{margin:0}
+  .card figure img{width:100%;height:190px;object-fit:cover}
+  .card figure figcaption{font-size:.76rem;color:var(--muted);padding:8px 16px 0}
+  .card .body{padding:16px 18px 18px}
+  .card figure + .body{padding-top:10px}
+  .date{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:.86rem;color:var(--accent);letter-spacing:.02em;margin:0 0 2px}
+  .card h3{font-family:"Newsreader",serif;font-weight:600;font-size:1.45rem;line-height:1.15;margin:0 0 4px}
+  .place{font-size:.88rem;color:var(--muted);margin:0 0 10px}
+  .place b{color:var(--ink-soft);font-weight:700}
+  .card .story{margin:0 0 12px;color:var(--ink-soft);font-size:.98rem}
+  blockquote.record{margin:0 0 12px;padding:12px 14px;background:var(--paper-2);border-radius:10px;font-family:"Newsreader",serif;font-style:italic;font-size:1.02rem;line-height:1.45;color:var(--ink)}
+  blockquote.record cite{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+  .tag{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:4px 9px;color:var(--muted)}
+  .tag.case{border-color:var(--accent);color:var(--accent);font-weight:600}
+  .links{display:flex;flex-wrap:wrap;gap:8px}
+  .hidden{display:none!important}
+
+  /* ---------- how to use / index ---------- */
+  .howto{margin:56px auto 0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+  .howto ol{margin:10px 0 0;padding-left:22px;color:var(--ink-soft)}
+  .howto li{margin-bottom:8px}
+  .apps-index{margin:48px auto 0}
+  .apps-index p.intro{color:var(--ink-soft);max-width:46em;margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:960px){.grid{grid-template-columns:1fr 1fr 1fr}}
+  .appcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;text-decoration:none;display:block;box-shadow:var(--shadow)}
+  .appcard:hover{border-color:var(--accent,var(--ochre))}
+  .appcard .k{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+  .appcard h3{font-family:"Newsreader",serif;font-size:1.2rem;margin:0 0 4px;font-weight:600}
+  .appcard p{margin:0;font-size:.9rem;color:var(--ink-soft)}
+  .appcard .go{font-weight:700;font-size:.9rem;margin-top:10px;display:inline-block}
+  .appcard[data-part="1"]{--accent:var(--ochre)} .appcard[data-part="2"]{--accent:var(--sea)}
+  .appcard[data-part="3"]{--accent:var(--gold)} .appcard[data-part="4"]{--accent:var(--rust)}
+  .appcard{border-top:4px solid var(--accent,var(--ochre))}
+
+  footer{margin:56px 0 0;border-top:1px solid var(--line);background:var(--paper-2)}
+  footer .wrap{padding-top:24px;padding-bottom:34px}
+  footer p{font-size:.88rem;color:var(--muted);margin:0 0 8px;max-width:52em}
+  footer p b{color:var(--ink-soft)}
+
+  .tl{margin-bottom:8px} body{padding-bottom:36px}
+  .simple-head{max-width:1120px;margin:0 auto;padding:56px 20px 10px;text-align:left}
+  .simple-head h1{font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:clamp(2.6rem,7vw,4.5rem);line-height:1.02;margin:0;letter-spacing:-.01em;color:var(--ink)}
+  .simple-head h1 em{font-style:italic;font-weight:500;color:var(--ochre)}
+  @media (prefers-color-scheme: dark){ .simple-head h1 em{color:var(--ochre)} }
+  .part{grid-template-columns:1fr!important}
+  a.titlelink{color:inherit;text-decoration:none}
+  a.titlelink:hover{text-decoration:underline;text-underline-offset:4px}
+  a.titlelink:focus-visible{outline:3px solid var(--ochre);outline-offset:3px;border-radius:4px}
+
+  meta-robots-placeholder {}
+  .notice{
+    max-width:1120px;margin:0 auto;padding:0 20px 8px;
+  }
+  .notice p{
+    margin:0 0 18px;padding:12px 16px;border-left:4px solid var(--ochre);
+    background:var(--paper-2);color:var(--ink-soft);font-size:.92rem;max-width:62em;
+  }
+  .topnav{
+    max-width:1120px;margin:0 auto;padding:18px 20px 0;
+    display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-content:space-between;
+  }
+  .topnav a{color:var(--sea);font-weight:700;text-decoration:none;font-size:.95rem}
+  .topnav a:hover,.topnav a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+  .qrbox{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.8rem;max-width:16rem}
+  .qrbox img{width:72px;height:72px;border:1px solid var(--line);background:#fff;flex:0 0 auto}
+  /* images fit the screen and tap to enlarge */
+  figure{margin:0}
+  figure img, .card figure img{
+    max-width:100%;height:auto;max-height:70vh;width:auto;object-fit:contain;
+    cursor:zoom-in;border-radius:10px 10px 0 0;
+  }
+  @media (max-width:600px){
+    figure img, .card figure img{max-height:60vh}
+  }
+  button.zoom{
+    display:block;width:100%;margin:0;padding:0;border:0;background:transparent;cursor:zoom-in;
+    font:inherit;color:inherit;
+  }
+  .lightbox[hidden]{display:none}
+  .lightbox{
+    position:fixed;inset:0;z-index:80;background:rgba(16,12,8,.92);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;
+  }
+  .lightbox-stage{max-width:100%;max-height:90vh;display:flex;align-items:center;justify-content:center}
+  .lightbox-stage img{max-width:100%;max-height:88vh;width:auto;height:auto;object-fit:contain}
+  .lightbox-close{
+    position:absolute;top:10px;right:12px;min-width:44px;min-height:44px;border:0;border-radius:999px;
+    background:#f6efe1;color:#241b10;font-size:1.6rem;cursor:pointer;line-height:1;
+  }
+  .teacher{
+    max-width:1120px;margin:28px auto 0;padding:8px 20px 48px;
+  }
+  .teacher details{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 18px 16px;
+  }
+  .teacher summary{
+    cursor:pointer;font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.2rem;
+    padding:12px 0;min-height:44px;
+  }
+  .teacher p,.teacher li{color:var(--ink-soft);font-size:.95rem}
+  .teacher ul{padding-left:1.2em}
+  footer.site{
+    max-width:1120px;margin:0 auto;padding:8px 20px 48px;color:var(--muted);font-size:.88rem;
+  }
+  footer.site a{color:var(--sea)}
+
+  .endmark{font-family:"Newsreader",serif;font-style:italic;font-size:1.15rem;color:var(--ink);margin-top:14px}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+
+<nav class="topnav">
+  <a href="../">← The four books</a>
+  <div class="qrbox">
+    <img src="assets/book-one-timeline-qr.png" width="72" height="72" alt="QR code for this Book One timeline">
+    <span>Open on a phone: this page. The code does not go to a case file.</span>
+  </div>
+</nav>
+<div class="notice">
+  <p>Aboriginal and Torres Strait Islander readers are advised that this timeline names people who have died, and discusses colonisation and dispossession. No photographs of deceased Aboriginal or Torres Strait Islander people are used, and no rock art is shown.</p>
+</div>
+<header class="simple-head">
+  <h1>Deep Time to <em>Federation</em></h1>
+</header>
+
+<!-- timeline -->
+<!-- ================= PART ONE ================= -->
+<section class="part wrap" data-part="1" id="part1">
+  <div>
+    <p class="pnum">Part One</p>
+    <h2>Before the Ships</h2>
+    <p class="pdesc">Tens of thousands of years with the continent to its own peoples — then, in just thirteen years, a pewter plate on a cliff top and a Dutch ship broken on a reef. The oldest object left by outsiders dates from 1616.</p>
+  </div>
+</section>
+
+<div class="tl" id="timeline">
+  <div id="fill" aria-hidden="true"></div>
+
+  <article class="stop" data-part="1">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      
+      <div class="body">
+        <p class="date">c. 65,000 YEARS AGO</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/madjedbebe-case/" target="_blank" rel="noopener">Deep Time — Madjedbebe</a></h3>
+        <p class="place"><b>Mirarr Country</b> · western Arnhem Land · Chapter: <i>Deep Time</i></p>
+        <p class="story">At a rock shelter called Madjedbebe, archaeologists dated grains of buried sand that had last seen sunlight around 65,000 years ago — alongside stone tools and ochre. Not everyone agrees: another team argues for arrival about 50,000–55,000 years ago. The book gives you both findings and leaves the weighing to you.</p>
+        <blockquote class="record">“Human occupation began around 65,000 years ago…”<cite>Nature · 20 July 2017 · Clarkson, Jacobs, Marwick et al.</cite></blockquote>
+        <div class="tags"><span class="tag">Book One · Ch. 1</span><span class="tag case">Cold case</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/madjedbebe-case/" target="_blank" rel="noopener">Madjedbebe case →</a>
+          <a class="appbtn small light" href="https://robmac10.github.io/65000-years/" target="_blank" rel="noopener">65,000 Years →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="1">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <figure>
+        <button type="button" class="zoom" aria-label="Enlarge the image"><img src="assets/lake-mungo.png" alt="The eroded Walls of China dunes at Lake Mungo at sunset" loading="lazy" /></button>
+        <figcaption>Lake Mungo at evening — the dry lake where the oldest human remains in Australia were found.</figcaption>
+      </figure>
+      <div class="body">
+        <p class="date">c. 40,000–42,000 YEARS AGO</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/lake-mungo-case/" target="_blank" rel="noopener">Mungo Lady &amp; Mungo Man</a></h3>
+        <p class="place"><b>Paakantji, Ngiyampaa &amp; Mutthi Mutthi Country</b> · Lake Mungo, NSW · Chapter: <i>Deep Time</i></p>
+        <p class="story">In 1968 and 1974, geologist Jim Bowler found two burials in a sand dune beside the dry lake — a woman who had been cremated, and a man laid on his back with red ochre. She was returned to Country in 1992. On 17 November 2017, after about forty years in Canberra, he was driven home in a hearse.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 1</span><span class="tag case">Cold case</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/lake-mungo-case/" target="_blank" rel="noopener">Lake Mungo case →</a>
+          <a class="appbtn small light" href="https://robmac10.github.io/before-the-ships/" target="_blank" rel="noopener">Before the Ships →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" data-part="1">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1606</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/duyfken-case/" target="_blank" rel="noopener">The Duyfken Sails the Gulf</a></h3>
+        <p class="place"><b>Cape York</b> · Queensland · Companion case</p>
+        <p class="story">Ten years before Hartog’s plate, the Dutch yacht <i>Duyfken</i> charted the western shore of Cape York — the first recorded European voyage to this coast. Book One’s story picks the thread up at the plate, but the Duyfken case file belongs on the same trail.</p>
+        <div class="tags"><span class="tag">Companion case</span><span class="tag case">Cold case</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/duyfken-case/" target="_blank" rel="noopener">Duyfken case →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="1">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <figure>
+        <button type="button" class="zoom" aria-label="Enlarge the image"><img src="assets/hartog-plate.jpg" alt="The weathered pewter Hartog plate of 1616, its Dutch inscription still partly legible" loading="lazy" /></button>
+        <figcaption>The Hartog plate, 1616 — now in the Rijksmuseum, Amsterdam.</figcaption>
+      </figure>
+      <div class="body">
+        <p class="date">25 OCTOBER 1616</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/hartog-plate-case/" target="_blank" rel="noopener">The Plate at Cape Inscription</a></h3>
+        <p class="place"><b>Malgana Country</b> · Dirk Hartog Island, Shark Bay, WA · Chapter: <i>The Plate at Cape Inscription, 1616</i></p>
+        <p class="story">The Dutch ship <i>Eendracht</i> stopped for just two days on its way to Java. On a cliff top the crew nailed a flat pewter plate to a post and scratched their names and the date into it. In 1697 Willem de Vlamingh found it still there, took it home, and left a copy with his own visit added.</p>
+        <blockquote class="record">“1616. On 25 October the ship Eendracht of Amsterdam arrived here… On the 27th of the same month they set sail for Bantam.”<cite>The words on the plate · 1616 · Translation: WA Museum</cite></blockquote>
+        <div class="tags"><span class="tag">Book One · Ch. 2</span><span class="tag case">Cold case</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/hartog-plate-case/" target="_blank" rel="noopener">Hartog Plate case →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" data-part="1">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <figure>
+        <button type="button" class="zoom" aria-label="Enlarge the image"><img src="assets/batavia.jpg" alt="The recovered stern of the Batavia and the stone gateway in the Shipwreck Galleries, Fremantle" loading="lazy" /></button>
+        <figcaption>The Batavia’s stern and the stone gateway it was carrying — Shipwreck Galleries, Fremantle.</figcaption>
+      </figure>
+      <div class="body">
+        <p class="date">4 JUNE 1629</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/batavia-case/" target="_blank" rel="noopener">Batavia — Wreck &amp; Mutiny</a></h3>
+        <p class="place"><b>Houtman Abrolhos</b> · off the WA coast · Chapter: <i>Batavia, 1629</i></p>
+        <p class="story">The <i>Batavia</i> hit Morning Reef with about 316 people aboard. While commander Francisco Pelsaert sailed for help, Jeronimus Cornelisz and his followers killed about 125 survivors on the islands; a group of soldiers led by Wiebbe Hayes held out until the rescue ship arrived. Two young men, Wouter Loos and Jan Pelgrom de Bye, were left on the mainland — and never heard of again. The killings are named in the book, not described.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 3</span><span class="tag case">Cold case</span><span class="tag">Content note in book</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/batavia-case/" target="_blank" rel="noopener">Batavia case →</a>
+          <a class="appbtn small light" href="https://robmac10.github.io/before-the-ships/" target="_blank" rel="noopener">Before the Ships →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="1">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1700s — EVERY SEASON</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/makassan-case/" target="_blank" rel="noopener">The Macassan Visitors</a></h3>
+        <p class="place"><b>Arnhem Land coast</b> · Northern Territory · Companion case</p>
+        <p class="story">Long before British settlement, fleets from Makassar, in Sulawesi, sailed in on the monsoon to fish for trepang (sea cucumber) along the north coast — trading, working alongside Aboriginal people, and sailing home again. A very different kind of visit from the ones that follow: they came, they traded, and they left.</p>
+        <div class="tags"><span class="tag">Companion case</span><span class="tag case">Cold case</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/makassan-case/" target="_blank" rel="noopener">Makassan case →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<!-- ================= PART TWO ================= -->
+<section class="part wrap" data-part="2" id="part2">
+  <div>
+    <p class="pnum">Part Two</p>
+    <h2>The Claim</h2>
+    <p class="pdesc">Secret instructions, a flag raised on an island, a fleet in a harbour it renamed — and the people who were already there: Arabanoo, Bennelong and Barangaroo, Pemulwuy, Bungaree. The part closes with the frontier, 1804 to 1838.</p>
+  </div>
+</section>
+
+<div class="tl">
+  <article class="stop" data-part="2">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">30 JULY 1768 · THEN 29 APRIL 1770</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/cook-case/" target="_blank" rel="noopener">Kamay — The Secret Instructions Meet the Shore</a></h3>
+        <p class="place"><b>Gweagal &amp; Dharawal Country</b> · Kamay (Botany Bay) · Chapters: <i>From the West Coast to Kamay</i> · <i>Kamay</i></p>
+        <p class="story">Before the <i>Endeavour</i> sailed, Cook was given secret orders: take possession <i>with the consent of the natives</i> — or, if the country was uninhabited, by marks and inscriptions. At Kamay, two men stood on the shore and opposed the landing. Cook fired three times. The ship stayed eight days, took forty or fifty spears from the huts — and the beads it left behind were still lying there the next morning. Four of those spears were handed back to the La Perouse Aboriginal Community on 23 April 2024.</p>
+        <blockquote class="record">“You are also with the Consent of the Natives to take Possession of Convenient Situations in the Country in the Name of the King of Great Britain: Or: if you find the Country uninhabited take Possession for his Majesty…”<cite>Admiralty Secret Instructions to Cook · 30 July 1768</cite></blockquote>
+        <div class="tags"><span class="tag">Book One · Ch. 4–5</span><span class="tag case">Cold case</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/cook-case/" target="_blank" rel="noopener">Cook case →</a>
+          <a class="appbtn small light" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">The Claim →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="2">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">22 AUGUST 1770</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">Possession Island — A Whole Coast, Claimed in an Afternoon</a></h3>
+        <p class="place"><b>Kaurareg, Gudang Yadhaykenu &amp; Ankamuthi Country</b> · Bedanug / Possession Island · Chapter: <i>Possession Island</i></p>
+        <p class="story">From a hilltop, Cook raised the flag and claimed “the whole Eastern coast” for King George III — while his own journal, the same day, recorded “a great number of Smokes, a certain sign that they are inhabited.” Two years earlier the Earl of Morton had reminded the voyagers that the peoples they met were “the natural, and in the strictest sense of the word, the legal possessors” of their lands. Kaurareg elders tell the day differently again — some say Cook never came ashore at all.</p>
+        <blockquote class="record">“…we have daily seen smokes on every part of the Coast we have lately been upon.”<cite>Cook · Endeavour Journal · 22 August 1770</cite></blockquote>
+        <div class="tags"><span class="tag">Book One · Ch. 6</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">Work it in The Claim →</a>
+          <a class="appbtn small light" href="https://robmac10.github.io/cook-case/" target="_blank" rel="noopener">Cook case →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" data-part="2">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">26 JANUARY 1788</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">Warrane — The Fleet Moves to Sydney Cove</a></h3>
+        <p class="place"><b>Gadigal Country</b> · Warrane (Sydney Cove) · Chapter: <i>Botany Bay and Warrane</i></p>
+        <p class="story">Botany Bay proved too open, too shallow and too short of fresh water. Phillip chose a cove up the harbour with a good spring — Warrane — and on the evening of 26 January the colours were displayed on shore. His instructions told him to “live in amity and kindness” with the people of the country, and to protect his own people first. Both orders are in the book, side by side.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 7</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">The Claim →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="2">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">DECEMBER 1788 — MAY 1789</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">Arabanoo — And the Sickness</a></h3>
+        <p class="place"><b>Sydney Harbour</b> · Chapter: <i>Arabanoo</i></p>
+        <p class="story">So the governor could learn the language, Arabanoo was seized on the beach at Manly Cove and kept with a fetter on his leg. Months later he was naming the coves for his captors — and then, in April 1789, boat crews began finding bodies in every cove. Smallpox. Arabanoo nursed the sick who were brought in, caught the disease, and died on 18 May 1789. Where it came from was argued about then — and historians still disagree.</p>
+        <blockquote class="record">“All dead! all dead!”<cite>Arabanoo · Recorded by David Collins · 1798</cite></blockquote>
+        <div class="tags"><span class="tag">Book One · Ch. 8</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">The Claim →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" data-part="2">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1789 — 1813</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">Bennelong &amp; Barangaroo</a></h3>
+        <p class="place"><b>Wangal Country &amp; Sydney</b> · Chapter: <i>Bennelong and Barangaroo</i></p>
+        <p class="story">Bennelong ate at the governor’s table, travelled to England, and in 1796 wrote the first known letter by an Aboriginal person in English. Barangaroo, his wife, refused the settlement’s terms in her own recorded words. Their chapter is told from both sides of the record — the governor’s letters, and what Bennelong asked for himself.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 9</span><span class="tag case"></span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">The Claim →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="2">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1790 — 1802</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">Pemulwuy — Twelve Years of Resistance</a></h3>
+        <p class="place"><b>Bidjigal Country</b> · Sydney region · Chapter: <i>Pemulwuy</i></p>
+        <p class="story">For twelve years Pemulwuy led resistance to the settlement spreading across Bidjigal Country — spearing the governor’s gamekeeper, raiding farms, and surviving being shot. He was shot dead on or just before 2 June 1802. His head was cut off and sent to England. It has never been returned.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 10</span><span class="tag case"></span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">The Claim →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" data-part="2">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1802 — 1803 · THEN 1813</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">Bungaree Sails Around the Continent — Then the Mountains Are Crossed</a></h3>
+        <p class="place"><b>Broken Bay to Bathurst</b> · Chapters: <i>Bungaree</i> · and the road west</p>
+        <p class="story">Bungaree, a Kuring-gai man, sailed all the way around the continent with Matthew Flinders — a go-between whose knowledge the voyagers depended on. A decade later, in May 1813, Blaxland, Lawson and Wentworth followed the ridges across the Blue Mountains — along a landscape Darug and Gundungurra people had travelled for thousands of years. Evans reached Bathurst, Cox built the road, and settlement poured west. The cold case asks who really found the way — and what “opening the interior” opened up.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 11</span><span class="tag case">Blue Mountains cold case</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">The Claim →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="2">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1804 — 1838</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">The Frontier</a></h3>
+        <p class="place"><b>Across the colonies</b> · Chapter: <i>The Frontier</i> · Closing chapter of Part Two</p>
+        <p class="story">Part Two closes by widening the lens: as settlement spread from 1804 to 1838, the same pattern repeated on Country after Country — land taken, resistance, and violence that the records often only half-tell. Book Two returns to these years and tells them from the full record; Book One gives the outline, at the level of outcome, without graphic detail.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 12</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/the-claim/" target="_blank" rel="noopener">The Claim →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<!-- ================= PART THREE ================= -->
+<section class="part wrap" data-part="3" id="part3">
+  <div>
+    <p class="pnum">Part Three</p>
+    <h2>Gold and Who Belongs</h2>
+    <p class="pdesc">Gold pulls the whole world to the diggings — and the diggings sit on someone’s Country. Who could dig, who could stay, who could belong? From Eureka in 1854 to Jandamarra in the Kimberley.</p>
+  </div>
+</section>
+
+<div class="tl">
+  <article class="stop" data-part="3">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <figure>
+        <button type="button" class="zoom" aria-label="Enlarge the image"><img src="assets/eureka-flag.jpg" alt="The conserved original Eureka flag — blue field, white cross and five stars, torn and faded" loading="lazy" /></button>
+        <figcaption>The original Eureka flag, conserved — flown at Bakery Hill on 30 November 1854.</figcaption>
+      </figure>
+      <div class="body">
+        <p class="date">3 DECEMBER 1854</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">Eureka — Ballarat</a></h3>
+        <p class="place"><b>Wadawurrung Country</b> · Ballarat, Victoria · Chapter: <i>Eureka</i></p>
+        <p class="story">Diggers who paid a monthly licence whether they found gold or not — and mostly could not vote — raised their own flag at Bakery Hill and swore to defend their rights and liberties. Before dawn on Sunday 3 December, soldiers and police stormed their stockade. At least twenty-two diggers and six soldiers died. Thirteen men were tried for high treason — and every jury said the same word. Within a year the licence was gone, replaced by a miner’s right that carried the vote.</p>
+        <blockquote class="record">“We swear by the Southern Cross to stand truly by each other, and fight to defend our rights and liberties.”<cite>The oath at Bakery Hill · 30 Nov 1854 · Carboni, The Eureka Stockade (1855)</cite></blockquote>
+        <div class="tags"><span class="tag">Book One · Ch. 13</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">Gold and Who Belongs →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="3">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1855 — 1857</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">The Walk from Robe</a></h3>
+        <p class="place"><b>Guichen Bay, Robe</b> · South Australia → Victoria · Chapter: <i>The Walk from Robe</i></p>
+        <p class="story">When Victoria taxed every Chinese passenger £10 and limited ships to one passenger per ten tons, the ships simply landed at Robe, where South Australia had no such law. In 1857 thousands of men came ashore — then walked hundreds of kilometres to the goldfields. Later that year South Australia passed a law of its own, and the ships stopped coming.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 14</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">Gold and Who Belongs →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" data-part="3">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">30 JUNE 1861</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/lambing-flat-case/" target="_blank" rel="noopener">Lambing Flat — “Roll Up”</a></h3>
+        <p class="place"><b>Burrangong</b> · now Young, NSW · Chapter: <i>Lambing Flat</i></p>
+        <p class="story">At Lambing Flat, crowds of white miners attacked the Chinese miners’ camps again and again — the worst attack on 30 June 1861, marching behind a banner painted on a tent flap. Police and soldiers were sent; most of the men tried were let go, and two were gaoled. Then New South Wales passed its own £10 law. The banner survives, in the museum at Young.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 15</span><span class="tag case">Cold case</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/lambing-flat-case/" target="_blank" rel="noopener">Lambing Flat case →</a>
+          <a class="appbtn small light" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">Gold and Who Belongs →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="3">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1860s ONWARDS</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/cameleers-case/" target="_blank" rel="noopener">The Cameleers — And Cooper Creek</a></h3>
+        <p class="place"><b>The inland</b> · Companion investigation</p>
+        <p class="story">The inland was opened to the new settlements by men the records lump together as “Afghans” — cameleers from many lands who carried everything the dry country could not. Their story runs alongside Burke and Wills at Cooper Creek in 1861, and gets its full telling in Book Two — but its case file already stands on this part of the trail.</p>
+        <div class="tags"><span class="tag">Companion case</span><span class="tag case">Cold case</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/cameleers-case/" target="_blank" rel="noopener">The Cameleers case →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" data-part="3">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1863 — 1886</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">Coranderrk — “We Will Show the Country”</a></h3>
+        <p class="place"><b>Kulin Country</b> · Badger Creek, Victoria · Chapter: <i>Coranderrk</i></p>
+        <p class="story">About forty Kulin people, led by Simon Wonga and William Barak, walked over the Dandenong Ranges and asked the Governor for land of their own. Coranderrk paid its way — houses, crops, baskets and rugs for sale. When managers and the Board tried to take it back, the people walked to Melbourne again and again with petitions. In 1886 a new law forced many families off the station and split them up. Barak stayed until he died in 1903.</p>
+        <blockquote class="record">“…we don’t want any Board… only one man, that is Mr. Green… and then we will show to the country that we can work it and make it pay.”<cite>William Barak · Evidence to the Coranderrk Inquiry · 1881</cite></blockquote>
+        <div class="tags"><span class="tag">Book One · Ch. 16</span><span class="tag">Investigation 4 in the app</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">Gold and Who Belongs →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="3">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1879</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">Torres Strait — A Line Drawn to New Guinea</a></h3>
+        <p class="place"><b>Torres Strait</b> · Queensland · Chapter: <i>Torres Strait</i></p>
+        <p class="story">The peoples of the Strait had fished, gardened, sailed and traded between its islands for thousands of years. In 1879 the Queensland Parliament simply passed an Act annexing the rest of the islands, all the way to the coast of New Guinea. The border that Act drew still runs close to that coast today.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 17</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">Gold and Who Belongs →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" data-part="3">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">1894 — 1 APRIL 1897</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">Jandamarra — Bunuba Country</a></h3>
+        <p class="place"><b>Bunuba Country</b> · Napier &amp; Oscar Ranges, Kimberley, WA · Chapter: <i>Jandamarra</i></p>
+        <p class="story">Jandamarra worked as a police tracker at Lillimooloora — until the constable he served held seventeen Bunuba prisoners, many of them his family. On the night of 31 October 1894 he set them free. For almost three years Bunuba people fought from the ranges, until Jandamarra was shot dead at Tunnel Creek. Today the Bunuba people tell this story themselves.</p>
+        <blockquote class="record">“…the story of Jandamarra speaks to our strength and resilience as a people.”<cite>Bunuba Country · Lillimooloora Station</cite></blockquote>
+        <div class="tags"><span class="tag">Book One · Ch. 18</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/gold-who-belongs/" target="_blank" rel="noopener">Gold and Who Belongs →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<!-- ================= PART FOUR ================= -->
+<section class="part wrap" data-part="4" id="part4">
+  <div>
+    <p class="pnum">Part Four</p>
+    <h2>Federation</h2>
+    <p class="pdesc">Six colonies become one nation — on paper, at least. Who had a say in making it, who was counted, and who was left out? The book ends not in 1901, but with the vote, in 1902.</p>
+  </div>
+</section>
+
+<div class="tl">
+  <article class="stop" data-part="4">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">DECEMBER 1894</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/federation-case/" target="_blank" rel="noopener">First, the Vote — South Australia</a></h3>
+        <p class="place"><b>Adelaide</b> · Epilogue: <i>The Vote</i> · The book tells this last, as an epilogue</p>
+        <p class="story">The timeline puts this stop before Federation, because that is when it happened — the book saves it for the epilogue, because of what it sets up. South Australian women collected more than eleven thousand signatures, and in December 1894 their Parliament gave women the vote <i>and</i> the right to stand for Parliament. The law did not leave out Aboriginal women. Western Australia followed in 1899 — its law did leave Aboriginal people out, unless they owned land.</p>
+        <div class="tags"><span class="tag">Book One · Epilogue</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/federation-case/" target="_blank" rel="noopener">Federation case →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="4">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <figure>
+        <button type="button" class="zoom" aria-label="Enlarge the image"><img src="assets/federation.jpg" alt="Tom Roberts’ painting of the opening of the first Commonwealth Parliament in Melbourne, 9 May 1901" loading="lazy" /></button>
+        <figcaption>Tom Roberts, <i>The Opening of the First Parliament of the Commonwealth of Australia</i>, 9 May 1901 (painted 1903).</figcaption>
+      </figure>
+      <div class="body">
+        <p class="date">1 JANUARY 1901</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/federation-case/" target="_blank" rel="noopener">One Nation — Federation</a></h3>
+        <p class="place"><b>Centennial Park, Sydney</b> · then Melbourne · Chapter: <i>One Nation</i></p>
+        <p class="story">On 1 January 1901 the Commonwealth of Australia began, with Edmund Barton as its first Prime Minister; the first federal Parliament opened in Melbourne on 9 May. But near the end of the new Constitution sat section 127 — the counting rule for the new nation.</p>
+        <blockquote class="record">“In reckoning the numbers of the people of the Commonwealth… aboriginal natives shall not be counted.”<cite>The Constitution · Section 127 · 1900</cite></blockquote>
+        <div class="tags"><span class="tag">Book One · Ch. 19</span><span class="tag case">Case file</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/federation-case/" target="_blank" rel="noopener">Federation, 1901 case →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop" data-part="4">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">23 DECEMBER 1901</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/federation-case/" target="_blank" rel="noopener">The Dictation Test</a></h3>
+        <p class="place"><b>Canberra’s first laws</b> · Chapter: <i>The Dictation Test</i></p>
+        <p class="story">One of the new Parliament’s first laws was the Immigration Restriction Act. It never named who it was meant to keep out. Instead, an officer could demand a fifty-word dictation passage — in any European language the officer chose. In 1902 and 1903 the test was given 805 times. Forty-six people passed. After 1909, nobody passed it.</p>
+        <div class="tags"><span class="tag">Book One · Ch. 20</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/federation-case/" target="_blank" rel="noopener">Federation case →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="stop r" data-part="4">
+    <span class="dot" aria-hidden="true"></span>
+    <div class="card">
+      <div class="body">
+        <p class="date">12 JUNE 1902</p>
+        <h3><a class="titlelink" href="https://robmac10.github.io/federation-case/" target="_blank" rel="noopener">The Vote — Book One Ends Here</a></h3>
+        <p class="place"><b>Commonwealth Franchise Act</b> · Epilogue: <i>The Vote</i></p>
+        <p class="story">The Commonwealth Franchise Act gave women across Australia the vote for the national Parliament — in the same sections that barred Aboriginal natives of Australia, Asia, Africa and the Pacific (except New Zealand) from the roll. Women could vote. Most Aboriginal women and men could not. The book’s last words: the people whose Country it is were still here. So were the records. <i>The story goes on</i> — into Book Two.</p>
+        <div class="tags"><span class="tag">Book One · Epilogue</span><span class="tag">End of Book One</span></div>
+        <div class="links">
+          <a class="appbtn small" href="https://robmac10.github.io/federation-case/" target="_blank" rel="noopener">Federation case →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+
+
+<script>
+(function(){
+  var fill = document.getElementById('fill');
+  var tl = document.getElementById('timeline');
+  function updateFill(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    var bar = document.getElementById('progress');
+    if(bar){ bar.style.width = pct + '%'; }
+    if(tl && fill){
+      var r = tl.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var done = Math.min(Math.max(vh * 0.62 - r.top, 0), r.height);
+      fill.style.height = done + 'px';
+    }
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(!ticking){ ticking = true; requestAnimationFrame(function(){ updateFill(); ticking = false; }); }
+  }, {passive:true});
+  window.addEventListener('resize', updateFill);
+  updateFill();
+})();
+</script>
+
+<section class="teacher" id="teacher-note">
+  <details>
+    <summary>Teacher Note</summary>
+    <p>This page is a Book One timeline for <i>Reopen the Record: Australian Histories</i>. It was rebuilt from a writing draft so that it matches the other companion pages: images stay on the screen and tap to enlarge, there is no audio, and student cards do not carry year levels or case numbers. Book chapter labels (for example “Book One · Ch. 1”) stay, because they point to the book, not to a case number.</p>
+    <p>A Kakadu rock-art photograph was in the writing draft, as the opening image for Madjedbebe. It has been left out, in line with the series rule against showing rock art. The dating dispute (about 65,000 years, or about 50,000–55,000 years) is unchanged: both findings are on the card, and students are left to weigh them.</p>
+    <p>The Blue Mountains stop (May 1813 — Blaxland, Lawson and Wentworth, with the earlier path across Darug and Gundungurra Country) is an outline only. There is not yet a published Blue Mountains companion case. Britain Claims Australia (the four paper-and-flag steps of 1770–1829) is a separate investigation and is not a substitute for that case.</p>
+    <p>Image notes: Lake Mungo shows the dry lake and lunette, not ancestral remains. The Hartog plate, the Batavia stern and gateway, the Eureka flag, and Tom Roberts’s 1903 painting of the opening of the first Commonwealth Parliament are objects or a public historical painting, each captioned on the card. Confirm reuse rights before any print edition.</p>
+    <p>Curriculum links and year levels belong in teacher planning, not on the student cards. Companion case apps open in a new tab.</p>
+  </details>
+</section>
+<footer class="site">
+  <p>Reopen the Record · Australian Histories · Book One timeline — Deep Time to Federation. A writing draft, rebuilt for class use. <a href="../">Back to the four books</a>.</p>
+</footer>
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Magnified image">
+  <button type="button" class="lightbox-close" aria-label="Close the magnified image">&times;</button>
+  <div class="lightbox-stage"><img alt=""></div>
+</div>
+
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  if(!box) return;
+  var stageImg = box.querySelector('.lightbox-stage img');
+  var closeBtn = box.querySelector('.lightbox-close');
+  function open(src, alt){
+    stageImg.src = src; stageImg.alt = alt || '';
+    box.hidden = false; closeBtn.focus();
+  }
+  function close(){
+    box.hidden = true; stageImg.src = '';
+  }
+  document.querySelectorAll('button.zoom').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var img = btn.querySelector('img');
+      if(img) open(img.currentSrc || img.src, img.alt);
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function(e){ if(e.target === box) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !box.hidden) close(); });
+})();
+</script>
+
+</body>
+</html>

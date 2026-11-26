@@ -1,0 +1,210 @@
+#!/usr/bin/env python3
+"""Adapt the Muse Book One timeline into house style and write index.html."""
+from pathlib import Path
+import re
+import qrcode
+from qrcode.constants import ERROR_CORRECT_M
+from PIL import Image, ImageDraw
+
+ROOT = Path(__file__).resolve().parent
+SRC = Path("/workspace/muse/extracted/book-one-timeline.html")
+OUT = ROOT / "index.html"
+QR_URL = "https://robmac10.github.io/the-story-contents/book-one/"
+
+def make_qr():
+    qr = qrcode.QRCode(error_correction=ERROR_CORRECT_M, box_size=10, border=2)
+    qr.add_data(QR_URL)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="#241b10", back_color="#f6efe1").convert("RGB")
+    # emblem-style quiet cream square
+    path = ROOT / "assets" / "book-one-timeline-qr.png"
+    img.save(path, "PNG")
+    return path
+
+EXTRA_CSS = """
+  meta-robots-placeholder {}
+  .notice{
+    max-width:1120px;margin:0 auto;padding:0 20px 8px;
+  }
+  .notice p{
+    margin:0 0 18px;padding:12px 16px;border-left:4px solid var(--ochre);
+    background:var(--paper-2);color:var(--ink-soft);font-size:.92rem;max-width:62em;
+  }
+  .topnav{
+    max-width:1120px;margin:0 auto;padding:18px 20px 0;
+    display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;justify-content:space-between;
+  }
+  .topnav a{color:var(--sea);font-weight:700;text-decoration:none;font-size:.95rem}
+  .topnav a:hover,.topnav a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+  .qrbox{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.8rem;max-width:16rem}
+  .qrbox img{width:72px;height:72px;border:1px solid var(--line);background:#fff;flex:0 0 auto}
+  /* images fit the screen and tap to enlarge */
+  figure{margin:0}
+  figure img, .card figure img{
+    max-width:100%;height:auto;max-height:70vh;width:auto;object-fit:contain;
+    cursor:zoom-in;border-radius:10px 10px 0 0;
+  }
+  @media (max-width:600px){
+    figure img, .card figure img{max-height:60vh}
+  }
+  button.zoom{
+    display:block;width:100%;margin:0;padding:0;border:0;background:transparent;cursor:zoom-in;
+    font:inherit;color:inherit;
+  }
+  .lightbox[hidden]{display:none}
+  .lightbox{
+    position:fixed;inset:0;z-index:80;background:rgba(16,12,8,.92);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;
+  }
+  .lightbox-stage{max-width:100%;max-height:90vh;display:flex;align-items:center;justify-content:center}
+  .lightbox-stage img{max-width:100%;max-height:88vh;width:auto;height:auto;object-fit:contain}
+  .lightbox-close{
+    position:absolute;top:10px;right:12px;min-width:44px;min-height:44px;border:0;border-radius:999px;
+    background:#f6efe1;color:#241b10;font-size:1.6rem;cursor:pointer;line-height:1;
+  }
+  .teacher{
+    max-width:1120px;margin:28px auto 0;padding:8px 20px 48px;
+  }
+  .teacher details{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 18px 16px;
+  }
+  .teacher summary{
+    cursor:pointer;font-family:"Newsreader",Georgia,serif;font-weight:600;font-size:1.2rem;
+    padding:12px 0;min-height:44px;
+  }
+  .teacher p,.teacher li{color:var(--ink-soft);font-size:.95rem}
+  .teacher ul{padding-left:1.2em}
+  footer.site{
+    max-width:1120px;margin:0 auto;padding:8px 20px 48px;color:var(--muted);font-size:.88rem;
+  }
+  footer.site a{color:var(--sea)}
+"""
+
+NOTICE = """
+<nav class="topnav">
+  <a href="../">← The four books</a>
+  <div class="qrbox">
+    <img src="assets/book-one-timeline-qr.png" width="72" height="72" alt="QR code for this Book One timeline">
+    <span>Open on a phone: this page. The code does not go to a case file.</span>
+  </div>
+</nav>
+<div class="notice">
+  <p>Aboriginal and Torres Strait Islander readers are advised that this timeline names people who have died, and discusses colonisation and dispossession. No photographs of deceased Aboriginal or Torres Strait Islander people are used, and no rock art is shown.</p>
+</div>
+"""
+
+FOOT = """
+<section class="teacher" id="teacher-note">
+  <details>
+    <summary>Teacher Note</summary>
+    <p>This page is a Book One timeline for <i>Reopen the Record: Australian Histories</i>. It was rebuilt from a writing draft so that it matches the other companion pages: images stay on the screen and tap to enlarge, there is no audio, and student cards do not carry year levels or case numbers. Book chapter labels (for example “Book One · Ch. 1”) stay, because they point to the book, not to a case number.</p>
+    <p>A Kakadu rock-art photograph was in the writing draft, as the opening image for Madjedbebe. It has been left out, in line with the series rule against showing rock art. The dating dispute (about 65,000 years, or about 50,000–55,000 years) is unchanged: both findings are on the card, and students are left to weigh them.</p>
+    <p>The Blue Mountains stop (May 1813 — Blaxland, Lawson and Wentworth, with the earlier path across Darug and Gundungurra Country) is an outline only. There is not yet a published Blue Mountains companion case. Britain Claims Australia (the four paper-and-flag steps of 1770–1829) is a separate investigation and is not a substitute for that case.</p>
+    <p>Image notes: Lake Mungo shows the dry lake and lunette, not ancestral remains. The Hartog plate, the Batavia stern and gateway, the Eureka flag, and Tom Roberts’s 1903 painting of the opening of the first Commonwealth Parliament are objects or a public historical painting, each captioned on the card. Confirm reuse rights before any print edition.</p>
+    <p>Curriculum links and year levels belong in teacher planning, not on the student cards. Companion case apps open in a new tab.</p>
+  </details>
+</section>
+<footer class="site">
+  <p>Reopen the Record · Australian Histories · Book One timeline — Deep Time to Federation. A writing draft, rebuilt for class use. <a href="../">Back to the four books</a>.</p>
+</footer>
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Magnified image">
+  <button type="button" class="lightbox-close" aria-label="Close the magnified image">&times;</button>
+  <div class="lightbox-stage"><img alt=""></div>
+</div>
+"""
+
+LIGHTBOX_JS = """
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  if(!box) return;
+  var stageImg = box.querySelector('.lightbox-stage img');
+  var closeBtn = box.querySelector('.lightbox-close');
+  function open(src, alt){
+    stageImg.src = src; stageImg.alt = alt || '';
+    box.hidden = false; closeBtn.focus();
+  }
+  function close(){
+    box.hidden = true; stageImg.src = '';
+  }
+  document.querySelectorAll('button.zoom').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var img = btn.querySelector('img');
+      if(img) open(img.currentSrc || img.src, img.alt);
+    });
+  });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function(e){ if(e.target === box) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !box.hidden) close(); });
+})();
+</script>
+"""
+
+def main():
+    make_qr()
+    html = SRC.read_text(encoding="utf-8")
+
+    html = html.replace(
+        "<title>Deep Time to Federation</title>",
+        "<title>Deep Time to Federation · Book One timeline · Reopen the Record</title>\n"
+        '<meta name="robots" content="noindex, nofollow">\n'
+        '<meta name="description" content="Book One timeline for Reopen the Record: Australian Histories, from deep time to Federation and the vote in 1902.">',
+        1,
+    )
+
+    # Extra CSS before closing style
+    html = html.replace("  .endmark{", EXTRA_CSS + "\n  .endmark{", 1)
+
+    # Top nav + cultural notice after progress bar, before header
+    html = html.replace(
+        '<header class="simple-head">',
+        NOTICE + '<header class="simple-head">',
+        1,
+    )
+
+    # Remove rock art figure; do not replace with another Country photograph
+    html = re.sub(
+        r"<figure>\s*<img src=\"assets/rock-art\.jpg\"[^>]*>\s*<figcaption>Rock art in Kakadu[^<]*</figcaption>\s*</figure>",
+        "",
+        html,
+        count=1,
+        flags=re.S,
+    )
+
+    # Wrap remaining figures' images for lightbox
+    def wrap_fig(m):
+        img = m.group(1)
+        cap = m.group(2)
+        # don't double-wrap
+        if "button class=\"zoom\"" in img:
+            return m.group(0)
+        return f"<figure>\n        <button type=\"button\" class=\"zoom\" aria-label=\"Enlarge the image\">{img}</button>\n        <figcaption>{cap}</figcaption>\n      </figure>"
+
+    html = re.sub(
+        r"<figure>\s*(<img[^>]+>)\s*<figcaption>(.*?)</figcaption>\s*</figure>",
+        wrap_fig,
+        html,
+        flags=re.S,
+    )
+
+    # Strip year levels from student cards
+    html = html.replace('<span class="tag">Full case in Year 9 series</span>', "")
+    html = re.sub(r"Full case in Year 9 series", "", html)
+
+    # Footer + lightbox + JS before </body>
+    html = html.replace("</body>", FOOT + LIGHTBOX_JS + "\n</body>", 1)
+
+    # lang
+    html = html.replace('<html lang="en">', '<html lang="en-AU">', 1)
+
+    OUT.write_text(html, encoding="utf-8")
+    # sanity
+    text = OUT.read_text(encoding="utf-8")
+    assert "rock-art.jpg" not in text
+    assert "noindex" in text
+    assert "Year 9" not in text
+    assert "lightbox" in text
+    print("wrote", OUT, "bytes", OUT.stat().st_size)
+
+if __name__ == "__main__":
+    main()
