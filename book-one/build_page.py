@@ -99,7 +99,7 @@ FOOT = """
     <summary>Teacher Note</summary>
     <p>This page is a Book One timeline for <i>Reopen the Record: Australian Histories</i>. It was rebuilt from a writing draft so that it matches the other companion pages: images stay on the screen and tap to enlarge, there is no audio, and student cards do not carry year levels or case numbers. Book chapter labels (for example “Book One · Ch. 1”) stay, because they point to the book, not to a case number.</p>
     <p>A Kakadu rock-art photograph was in the writing draft, as the opening image for Madjedbebe. It has been left out, in line with the series rule against showing rock art. The dating dispute (about 65,000 years, or about 50,000–55,000 years) is unchanged: both findings are on the card, and students are left to weigh them.</p>
-    <p>The Blue Mountains stop (May 1813 — Blaxland, Lawson and Wentworth, with the earlier path across Darug and Gundungurra Country) now has a published case in the casebook reader: <a href="https://robmac10.github.io/reopen-the-record/#p=66" target="_blank" rel="noopener">Crossing the Blue Mountains, from page 66</a>. The four paper-and-flag steps of the British claim (1770–1829) have their own case in the same reader: <a href="https://robmac10.github.io/reopen-the-record/#p=37" target="_blank" rel="noopener">Britain Claims Australia, from page 37</a>. The two investigations are related in time, but they are not the same file. The Claim story app remains the companion for the landing at Kamay, Possession Island, and the early years of the colony.</p>
+    <p>The Blue Mountains stop (May 1813 — Blaxland, Lawson and Wentworth, with the earlier path across Darug and Gundungurra Country) now has a published case in the casebook reader: <a href="https://robmac10.github.io/reopen-the-record/#p=70" target="_blank" rel="noopener">Crossing the Blue Mountains, from page 70</a>. The four paper-and-flag steps of the British claim (1770–1829) have their own case in the same reader: <a href="https://robmac10.github.io/reopen-the-record/#p=37" target="_blank" rel="noopener">Britain Claims Australia, from page 37</a>. The two investigations are related in time, but they are not the same file. The Claim story app remains the companion for the landing at Kamay, Possession Island, and the early years of the colony.</p>
     <p>Image notes: Lake Mungo shows the dry lake and lunette, not ancestral remains. The Hartog plate, the Batavia stern and gateway, the Eureka flag, and Tom Roberts’s 1903 painting of the opening of the first Commonwealth Parliament are objects or a public historical painting, each captioned on the card. Confirm reuse rights before any print edition.</p>
     <p>Curriculum links and year levels belong in teacher planning, not on the student cards. Companion case apps open in a new tab.</p>
   </details>
@@ -193,7 +193,7 @@ def main():
 
     # Casebook links, kept here so a rebuild from the Muse source does not drop them.
     BC = "https://robmac10.github.io/reopen-the-record/#p=37"
-    BM = "https://robmac10.github.io/reopen-the-record/#p=66"
+    BM = "https://robmac10.github.io/reopen-the-record/#p=70"
     btn_bc = (
         '<a class="appbtn small light" href="%s" target="_blank" rel="noopener">'
         "Britain Claims case \u2192</a>" % BC
@@ -256,9 +256,9 @@ def main():
     assert "Year 9" not in text
     assert "lightbox" in text
     assert "reopen-the-record/#p=37" in text
-    assert "reopen-the-record/#p=66" in text
+    assert "reopen-the-record/#p=70" in text
     assert text.count("reopen-the-record/#p=37") >= 3  # three claim cards plus teacher note
-    assert text.count("reopen-the-record/#p=66") >= 2  # mountains card plus teacher note
+    assert text.count("reopen-the-record/#p=70") >= 2  # mountains card plus teacher note
     print("wrote", OUT, "bytes", OUT.stat().st_size)
 
 if __name__ == "__main__":
