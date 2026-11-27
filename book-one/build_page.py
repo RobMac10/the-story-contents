@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent
 SRC = Path("/workspace/muse/extracted/book-one-timeline.html")
 OUT = ROOT / "index.html"
 QR_URL = "https://robmac10.github.io/the-story-contents/book-one/"
-ASSET_V = "20261127a"
+ASSET_V = "20261127b"
 
 def make_qr():
     qr = qrcode.QRCode(error_correction=ERROR_CORRECT_M, box_size=10, border=2)
@@ -89,7 +89,7 @@ NOTICE = """
 <nav class="topnav">
   <a href="../">← The four books</a>
   <div class="qrbox">
-    <img src="assets/book-one-timeline-qr.png?v=20261127a" width="72" height="72" alt="QR code for this Book One timeline">
+    <img src="assets/book-one-timeline-qr.png?v=20261127b" width="72" height="72" alt="QR code for this Book One timeline">
     <span>Open on a phone: this page. The code does not go to a case file.</span>
   </div>
 </nav>
@@ -281,6 +281,11 @@ def main():
         '<a class="appbtn small" href="%s" target="_blank" rel="noopener">'
         "Blue Mountains case \u2192</a>" % BM
     )
+    CYOA = "https://robmac10.github.io/climbing-on-ancient-ground/"
+    btn_cyoa = (
+        '<a class="appbtn small light" href="%s" target="_blank" rel="noopener">'
+        "Choose your path: the 1813 journey</a>" % CYOA
+    )
     def add_btn(html, after, btn, label):
         if after not in html:
             raise SystemExit("timeline builder: %s block not found" % label)
@@ -318,6 +323,8 @@ def main():
     if needle not in rest:
         raise SystemExit("timeline builder: Bungaree The Claim button not found")
     rest = rest.replace(needle, needle + "\n          " + btn_bm, 1)
+    if btn_cyoa not in rest:
+        rest = rest.replace(btn_bm, btn_bm + "\n          " + btn_cyoa, 1)
     html = pre + _bm + rest
 
 
@@ -348,6 +355,8 @@ def main():
     assert "McKean" not in text
     assert "reopen-the-record/#p=37" in text
     assert "reopen-the-record/#p=70" in text
+    assert "climbing-on-ancient-ground/" in text
+    assert "Choose your path: the 1813 journey" in text
     assert text.count("reopen-the-record/#p=37") >= 3  # three claim cards plus teacher note
     assert text.count("reopen-the-record/#p=70") >= 2  # mountains card plus teacher note
     print("wrote", OUT, "bytes", OUT.stat().st_size)
